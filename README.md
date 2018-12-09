@@ -7,8 +7,8 @@ PS: This project's purpose is mainly to document my learning experience of data 
 ---
 Some useful stuff
 
-![alt text](https://github.com/axingjia/Journey_To_Data_Structure/ch1_assets/adv_disadv_1.png_ "stuff")
-![alt text](https://github.com/axingjia/Journey_To_Data_Structure/ch1_assets/adv_disadv_2.png_ "stuff")
+![alt text](https://github.com/axingjia/Journey_To_Data_Structure/blob/master/ch1_assets/adv_disadv_1.png_ "stuff")
+![alt text](https://github.com/axingjia/Journey_To_Data_Structure/blob/master/ch1_assets/adv_disadv_2.png_ "stuff")
 
 ---
 
