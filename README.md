@@ -3,3 +3,16 @@ I am reading "Data Structure and Algorithm in Java" by Robert Lafore. I was read
 Let the journey of learning begin!
 
 PS: This project's purpose is mainly to document my learning experience of data structure, and hopefully by having the project and document it it will motivate me to stick it to the end. Cheers!
+
+---
+Some useful stuff
+
+![alt text](https://github.com/axingjia/Journey_To_Data_Structure/ch1_assets/adv_disadv_1.png_ "stuff")
+![alt text](https://github.com/axingjia/Journey_To_Data_Structure/ch1_assets/adv_disadv_2.png_ "stuff")
+
+---
+
+Array:
+Insert: 1 step
+Search: N, average N/2
+Delete: Search and move the rest of the array
