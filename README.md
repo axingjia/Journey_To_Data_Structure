@@ -7,9 +7,7 @@ PS: This project's purpose is mainly to document my learning experience of data 
 ---
 Some useful stuff
 
-![alt text](ch1_assets/adv_disadv_1.png_ "stuff")
-![alt text](ch1_assets/adv_disadv_2.png_ "stuff")
-
+<img src="ch1_assets/adv_disadv_1.png">
 <img src="ch1_assets/adv_disadv_2.png">
 
 ---
