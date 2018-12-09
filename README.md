@@ -1,4 +1,4 @@
-I am reading "Data Structure and Algorithm in Java" by Robert Lafore. I was reading another book with C++ before but honestly I don't feel comfortable and don't feel it's practical to learn data structure in C++ as self-taught, because I will mainly only learn a either Java or C++ or technical interview, so why use C++ when you can just use Java for easiness?
+I am reading "Data Structure and Algorithm in Java" by Robert Lafore. I was reading another book with C++ before but honestly I don't feel comfortable and don't feel it's practical to learn data structure in C++ as a self-taught, because I will mainly only learn either Java or C++ for technical interview, so why use C++ when you can just use Java for easiness?
 
 Let the journey of learning begin!
 
