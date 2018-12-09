@@ -30,4 +30,4 @@ alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 ---
 
 Start of the construction of my review question:
-[Review Question](./review_question)
+[Review Question](./review_questions)

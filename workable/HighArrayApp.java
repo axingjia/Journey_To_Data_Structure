@@ -27,6 +27,28 @@ public boolean find(long searchKey)
 
 } // end find()
 //-----------------------------------------------------------
+public int find_binary(long searchKey){
+  int lowerBound = 0;
+  int upperBound = nElems-1;
+  int curIn;
+  while(true) {
+  curIn = (lowerBound + upperBound) / 2; if(a[curIn]==searchKey)
+    return curIn; //    found it
+  else if(lowerBound > upperBound)
+    return nElems; //   can’t find it
+  else // divide range
+  {
+    if(a[curIn] < searchKey)
+      lowerBound = curIn + 1; // it’s in upper half
+    else
+      upperBound = curIn - 1; // it’s in lower half
+    } // end else divide range
+  } // end while
+
+
+
+ } //end find()
+
 
 public void insert(long value) {
   a[nElems] = value;
@@ -67,19 +89,17 @@ class HighArrayApp
 {
 public static void main(String[] args)
 {
-int maxSize = 100;
-HighArray arr;
-arr = new HighArray(maxSize);
-arr.insert(77); arr.insert(99); arr.insert(44); arr.insert(55); arr.insert(22); arr.insert(88); arr.insert(11); arr.insert(00); arr.insert(66); arr.insert(33);
+int maxSize = 100; // array size
+HighArray arr; // reference to array
+arr = new HighArray(maxSize); // create the array
+arr.insert(77); arr.insert(99); arr.insert(44); arr.insert(55); arr.insert(22); arr.insert(88); arr.insert(11); arr.insert(00); arr.insert(66); arr.insert(33); // insert 10 items
 arr.display();
 int searchKey = 35;
 if( arr.find(searchKey) )
-// array size
-// reference to array
-// create the array
-// insert 10 items
-System.out.println("Found " + searchKey); else
-System.out.println("Can’t find " + searchKey);
+  System.out.println("Found " + searchKey);
+else
+  System.out.println("Can’t find " + searchKey);
+System.out.println("binary:" + arr.find_binary(searchKey));
 arr.delete(00); arr.delete(55); arr.delete(99); // delete 3 items
 arr.display(); // display items again
 } // end main()
