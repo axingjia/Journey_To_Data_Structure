@@ -26,3 +26,8 @@ I am curious about 3D in Java suddenly. And discover and figure out this.
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=W3R9X0VCFu0
 " target="_blank"><img src="http://img.youtube.com/vi/W3R9X0VCFu0/0.jpg"
 alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+
+---
+
+Start of the construction of my review question:
+[Review Question](./review_question)
