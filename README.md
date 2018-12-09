@@ -14,5 +14,7 @@ Some useful stuff
 
 Array:
 Insert: 1 step
+
 Search: N, average N/2
+
 Delete: Search and move the rest of the array
