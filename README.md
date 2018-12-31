@@ -7,8 +7,8 @@ PS: This project's purpose is mainly to document my learning experience of data 
 ---
 Some useful stuff
 
-<img src="ch1_assets/adv_disadv_1.png">
-<img src="ch1_assets/adv_disadv_2.png">
+<img src="assets/adv_disadv_1.png">
+<img src="assets/adv_disadv_2.png">
 
 ---
 
@@ -23,11 +23,17 @@ A bit of digression:
 
 I am curious about 3D in Java suddenly. And discover and figure out this.
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=W3R9X0VCFu0
-" target="_blank"><img src="http://img.youtube.com/vi/W3R9X0VCFu0/0.jpg"
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=W3R9X0VCFu0" target="_blank">
+<img src="http://img.youtube.com/vi/W3R9X0VCFu0/0.jpg"
 alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
 ---
 
 Start of the construction of my review question:
 [Review Question](./review_questions)
+
+
+selectsort and bubblesort are all O(N^2), but selectsort is faster.
+
+insertion sort algorithm visualization:
+<img src="assets/insertsort.png">

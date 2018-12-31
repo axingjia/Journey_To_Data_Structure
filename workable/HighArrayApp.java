@@ -83,6 +83,40 @@ public void display() // displays array contents
   System.out.print(a[j] + " "); // display it
   System.out.println("");
 }
+//programming project 2.1
+public long findMax(){
+  if(nElems==0){
+    // System.out.println(-1);
+    return -1;
+  }
+  long max=0;
+  for(int i=0;i<nElems;i++){
+    if(a[i]>max){
+      max=a[i];
+    }
+  }
+  return max;
+
+}
+
+public boolean removeMax(){
+  if(nElems==0){
+    // System.out.println(-1);
+    return false;
+  }
+  long max=0;
+  for(int i=0;i<nElems;i++){
+    if(a[i]>max){
+      max=a[i];
+    }
+  }
+  delete(max);
+  return true;
+}
+
+public int length(){
+  return nElems;
+}
 //-----------------------------------------------------------
 } // end class HighArray ////////////////////////////////////////////////////////////////
 class HighArrayApp
@@ -102,6 +136,24 @@ else
 System.out.println("binary:" + arr.find_binary(searchKey));
 arr.delete(00); arr.delete(55); arr.delete(99); // delete 3 items
 arr.display(); // display items again
+System.out.println("print max");
+System.out.println(arr.findMax());
+// arr.removeMax();
+// arr.display();
+HighArray secondArr=new HighArray(100);
+System.out.println(arr.length());
+int theLength=arr.length();
+for(int i=0;i<theLength;i++){
+  long max=arr.findMax();
+  secondArr.insert(max);
+  arr.removeMax();
+  secondArr.display();
+  System.out.println(i);
+}
+System.out.println("the second array ordered");
+arr.display();
+secondArr.display();
+
 } // end main()
 } // end class HighArrayApp
 
