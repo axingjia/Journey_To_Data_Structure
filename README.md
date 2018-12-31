@@ -36,4 +36,5 @@ Start of the construction of my review question:
 selectsort and bubblesort are all O(N^2), but selectsort is faster.
 
 insertion sort algorithm visualization:
+
 <img src="assets/insertsort.png">
