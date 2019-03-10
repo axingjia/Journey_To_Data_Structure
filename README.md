@@ -77,7 +77,7 @@ target="_ blank">Stack Implementation</a>
 target="_ blank">Delimiter matching</a>
 
 Efficiency of stack: pop and push are both O(1)
-------------
+--
 
 About circular queue: a way to make the front and the back moves forward so the back doesn't need to reach the end of the array
 
