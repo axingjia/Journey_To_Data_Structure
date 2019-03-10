@@ -64,7 +64,8 @@ The selection sort minimizes the number of swaps, but the number of comparisons 
 
 MY: selection sort is picking the position, and put the right item at that position. insertion sort is getting the next item, and put it at the left pile while maintaining its sortedness on the left pile
 
-###Chapter 4###
+# Chapter 4
+
 Stack and queue enforces restricted access
 
 <a href="workable/stack.java" 
