@@ -67,7 +67,7 @@ MY: selection sort is picking the position, and put the right item at that posit
 #Chapter 4
 Stack and queue enforces restricted access
 
-<a href="workable/bracket.java" 
+<a href="workable/brackets.java" 
 target="_ blank">Delimiter matching</a>
 
 About circular queue: a way to make the front and the back moves forward so the back doesn't need to reach the end of the array
