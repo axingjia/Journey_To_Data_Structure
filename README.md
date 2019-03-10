@@ -87,3 +87,9 @@ About circular queue: a way to make the front and the back moves forward so the 
 (Also, I feel like self-teaching CS and reading a 800pages e-book require some sort of keep-tracking. And a note/review/sharing place on github fits the bill for this purpose very well).
 (The reason for it is because you need to try to execute the code to learn CS, just reading about it is too abstract(at least for me). )
 
+Insert is called add/put/enque, remove is called delete/get/deque
+The rear of the queue is inserted is also called back/tail/end, the head is also called front.
+
+<a href="workable/queue.java" 
+target="_ blank">Queue Array Implementation</a>
+
