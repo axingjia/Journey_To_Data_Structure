@@ -71,15 +71,18 @@ Stack and queue enforces restricted access
 <a href="workable/stack.java" 
 target="_ blank">Stack Implementation</a>
 
-//skip reversing a word using stack, it's just breaking down a string with charA and push it into a stack and pop it then cancat it to an empty string
+//skip reversing a word using stack, it's just breaking down a string with charAt and push it into a stack and pop it then cancat it to an empty string
 
 <a href="workable/brackets.java" 
 target="_ blank">Delimiter matching</a>
+
+Efficiency of stack: pop and push are both O(1)
+------------
 
 About circular queue: a way to make the front and the back moves forward so the back doesn't need to reach the end of the array
 
 (A little bit of hiccup here. The markdown on atom.io turns everything after an underscore to purple. And then digress to other things. After three months since December last year, now get back to it)
 
-(Also, I feel like self-teaching CS and reading a 600pages e-book require some sort of keep-tracking. And a note/review/sharing place on github fits the bill for this purpose very well).
+(Also, I feel like self-teaching CS and reading a 800pages e-book require some sort of keep-tracking. And a note/review/sharing place on github fits the bill for this purpose very well).
 (The reason for it is because you need to try to execute the code to learn CS, just reading about it is too abstract(at least for me). )
 
