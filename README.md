@@ -64,7 +64,7 @@ The selection sort minimizes the number of swaps, but the number of comparisons 
 
 MY: selection sort is picking the position, and put the right item at that position. insertion sort is getting the next item, and put it at the left pile while maintaining its sortedness on the left pile
 
-#Chapter 4
+###Chapter 4###
 Stack and queue enforces restricted access
 
 <a href="workable/stack.java" 
@@ -79,6 +79,6 @@ About circular queue: a way to make the front and the back moves forward so the 
 
 (A little bit of hiccup here. The markdown on atom.io turns everything after an underscore to purple. And then digress to other things. After three months since December last year, now get back to it)
 
-(Also, I feel like self-teaching CS and reading a 600pages book require some sort of keep-tracking. And a note/review/sharing place on github fits the bill for this purpose very well).
+(Also, I feel like self-teaching CS and reading a 600pages e-book require some sort of keep-tracking. And a note/review/sharing place on github fits the bill for this purpose very well).
 (The reason for it is because you need to try to execute the code to learn CS, just reading about it is too abstract(at least for me). )
 
