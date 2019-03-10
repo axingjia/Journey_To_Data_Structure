@@ -67,6 +67,11 @@ MY: selection sort is picking the position, and put the right item at that posit
 #Chapter 4
 Stack and queue enforces restricted access
 
+<a href="workable/stack.java" 
+target="_ blank">Stack Implementation</a>
+
+//skip reversing a word using stack, it's just breaking down a string with charA and push it into a stack and pop it then cancat it to an empty string
+
 <a href="workable/brackets.java" 
 target="_ blank">Delimiter matching</a>
 
