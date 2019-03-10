@@ -68,10 +68,12 @@ MY: selection sort is picking the position, and put the right item at that posit
 Stack and queue enforces restricted access
 
 <a href="workable/bracket.java" 
-target="_ blank">
+target="_ blank">Delimiter matching</a>
 
 About circular queue: a way to make the front and the back moves forward so the back doesn't need to reach the end of the array
 
 (A little bit of hiccup here. The markdown on atom.io turns everything after an underscore to purple. And then digress to other things. After three months since December last year, now get back to it)
 
 (Also, I feel like self-teaching CS and reading a 600pages book require some sort of keep-tracking. And a note/review/sharing place on github fits the bill for this purpose very well).
+(The reason for it is because you need to try to execute the code to learn CS, just reading about it is too abstract(at least for me). )
+
