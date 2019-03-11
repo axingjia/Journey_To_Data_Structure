@@ -89,10 +89,11 @@ About circular queue: a way to make the front and the back moves forward so the 
 
 Insert is called add/put/enque, remove is called delete/get/deque
 The rear of the queue is inserted is also called back/tail/end, the head is also called front.
+The rear is the beginning of the array, and the head is the end of the array
 
 <a href="workable/queue.java" 
 target="_ blank">Queue Array Implementation</a>
 
 (One more thing about just reading it on textbook, is the code doesn't have color and its hard to read)
-(One more thing is having it online allows you to redo it with your own version by saving time)
+(One more thing is having it online allows you to saving time when redoing it with your own version)
 

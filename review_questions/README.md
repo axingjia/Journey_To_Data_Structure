@@ -5,3 +5,5 @@
 --igore ordered array and etc.
 
 3. Write out implementation of a bubble sort
+
+4. Write your own implementation of Queue
