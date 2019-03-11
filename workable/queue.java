@@ -10,7 +10,8 @@ public Queue(int s) // constructor
 maxSize = s;
 queArray = new long[maxSize];
 front = 0;
-rear = -1;
+// rear = -1;
+rear=0; 
 nItems = 0;
 }
 //--------------------------------------------------------------
@@ -19,15 +20,26 @@ public void insert(long j) { // put item at rear of queue
     rear = -1;
   queArray[++rear] = j; // increment rear and insert
   nItems++; // one more item
+  //MY: the beginning rear is -1, at the very beginning rear is become 0, if rear is getting to the end of the array, rear is turn to -1, and then add back to 0, aka the beginning of the array
+/*
+If I want to do it */
+    // if(rear==maxSize-1){
+    //     rear=0;
+    // }
+    // // rear=0; 
+    // queArray[rear]=j;
+    // rear++;
+    // nItems++;
+/**/
 }
 //--------------------------------------------------------------
 public long remove() // take item from front of queue
 {
-long temp = queArray[front++]; // get value and incr front
-if(front == maxSize) // deal with wraparound
-  front = 0;
-nItems--; // one less item
-return temp;
+    long temp = queArray[front++]; // get value and incr front
+    if(front == maxSize) // deal with wraparound
+      front = 0;
+    nItems--; // one less item
+    return temp;
 }
 //--------------------------------------------------------------
 public long peekFront() // peek at front of queue

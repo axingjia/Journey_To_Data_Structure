@@ -93,3 +93,6 @@ The rear of the queue is inserted is also called back/tail/end, the head is also
 <a href="workable/queue.java" 
 target="_ blank">Queue Array Implementation</a>
 
+(One more thing about just reading it on textbook, is the code doesn't have color and its hard to read)
+(One more thing is having it online allows you to redo it with your own version by saving time)
+
