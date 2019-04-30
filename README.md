@@ -97,3 +97,53 @@ target="_ blank">Queue Array Implementation</a>
 (One more thing about just reading it on textbook, is the code doesn't have color and its hard to read)
 (One more thing is having it online allows you to saving time when redoing it with your own version)
 
+(2 months has passed. I am coming back from a digression of reading the queue implementation. Just can't figure out why rear has to equal to -1 and can't be 0, and if I can make it to become 0)
+
+So there are two problems I have, 1. why rear is -1 and front is 0, 2. why rear is on the left and front is on the right of the array.
+
+Third question, there are many kinds of implementation of Queue, which one is correct, which use should I use? Which one should I write it into my notes
+
+To answer this question, I need to figure out one of them, and implement it correctly and then write down the code, which is the hardest part, because I can't break down the construction of implementation process.
+
+<a href="https://www.youtube.com/watch?v=okr-XE8yTO8" 
+target="_ blank">Queue explaination by someone which rear and front are -1, which is more understandable</a>
+
+By the explaination is too fast, I kind of understand the pseudo code, but not totally, still very vague
+
+Tried looking up to google, the text format is too hard to distill.
+
+<a href="https://www.geeksforgeeks.org/circular-queue-set-1-introduction-array-implementation/" 
+target="_ blank">Another circular queue implementation that has rear and front equals to -1.</a>
+
+<a href="https://www.youtube.com/watch?v=wjI1WNcIntg" 
+target="_ blank">Queue in Linked List</a>
+
+<a href="https://www.youtube.com/watch?v=gnYM_G1ILm0" 
+target="_ blank">Another queue implementation that has rear on the right</a>
+
+<a href="https://www.youtube.com/watch?v=q5oOYxfOD1c" 
+target="_ blank">Another queue implementation that has rear equals to capacity - 1</a>
+
+So the implementation in this book is largely simplify.    
+The implementation doesn't do error checking like checking if full for insert
+
+So here I have to make a choice here. Whether to use the simply queue implementation in the book, or use the one on GeekforGeek
+
+To figure out which to use, I have to completely understand the implementation of the book's and of the GeekForGeek's and then compare it.
+
+To better do that, just reading it and taking mental note is not enough. I need to write down the explanation of both.
+
+For the book's, front=0; rear=-1; insert: when rear is at the end of the array, make it -1, don't worry, we will add it at the end anyways.
+
+The remove increment the front, and then check wrapping
+
+Ok, I find a line saying this implementation assumes the queue is not full. This is *important*
+
+For GeekForGeek,front and rear=-1; it has a full check, and a first element check to both front and rear to 0; *okay, the book's implementation is more elegant but more complex, because it combines the first element check and other condition*.
+
+It also has a front!=0 check for the wrap around condition, why? One obvious reason is it's a check for full condition.  The book's implementation doesn't have it because it has an assumption. One lesson learn: *assumption can be major*.
+
+For the remove/dequeue, do an empty check,
+
+One difference between front=0 vs =1 is the other functions.
+

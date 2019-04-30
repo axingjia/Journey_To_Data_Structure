@@ -7,3 +7,7 @@
 3. Write out implementation of a bubble sort
 
 4. Write your own implementation of Queue
+
+5. Write Queue in Linked List
+
+6. Write circular queue implementation with total error checking

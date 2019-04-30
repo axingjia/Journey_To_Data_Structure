@@ -8,12 +8,12 @@ private int maxSize; private long[] queArray; public int front; public int rear;
 //--------------------------------------------------------------
 public Queue(int s) // constructor
 {
-maxSize = s;
-queArray = new long[maxSize];
-front = 0;
-rear = -1;
-// rear=0; 
-nItems = 0;
+    maxSize = s;
+    queArray = new long[maxSize];
+    front = 0;
+    rear = -1;
+    // rear=0; 
+    nItems = 0;
 }
 //--------------------------------------------------------------
 public void insert(long j) { // put item at rear of queue
@@ -86,33 +86,33 @@ public static void main(String[] args)
  {
 Queue theQueue = new Queue(5);// queue holds 5 items
 theQueue.insert(10); theQueue.insert(20); theQueue.insert(30); theQueue.insert(40); // insert 4 items
-theQueue.arrayPrint();
+// theQueue.arrayPrint();
 
 
 System.out.println("new remove "+theQueue.remove());
-theQueue.frontAndRear(); 
-theQueue.arrayPrint();
-System.out.println("");
+// theQueue.frontAndRear(); 
+// theQueue.arrayPrint();
+// System.out.println("");
 System.out.println("new remove "+theQueue.remove()); 
-theQueue.frontAndRear(); 
-theQueue.arrayPrint();
-System.out.println("");
+// theQueue.frontAndRear(); 
+// theQueue.arrayPrint();
+// System.out.println("");
 System.out.println("new remove "+theQueue.remove()); 
-theQueue.frontAndRear(); 
-theQueue.arrayPrint();
-System.out.println("");
+// theQueue.frontAndRear(); 
+// theQueue.arrayPrint();
+// System.out.println("");
 theQueue.insert(50); 
-theQueue.arrayPrint();
-System.out.println("");
+// theQueue.arrayPrint();
+// System.out.println("");
 theQueue.insert(60); 
-theQueue.arrayPrint();
-System.out.println("");
+// theQueue.arrayPrint();
+// System.out.println("");
 theQueue.insert(70); 
-theQueue.arrayPrint();
-System.out.println("");
+// theQueue.arrayPrint();
+// System.out.println("");
 theQueue.insert(80); // insert 4 more items // (wraps around)
 theQueue.arrayPrint();
-System.out.println("");
+// System.out.println("");
 theQueue.print();
 
 //MY WAY will: rear 0: 0th element=10, 1st=20
