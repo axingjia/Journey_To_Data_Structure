@@ -161,3 +161,39 @@ When enqueue, front doesn't wrap around if front is bigger than the array size.
 
 Oh crap, front doesn't move with enqueue, it wraps around at dequeue, my bad
 
+Okay, successfully implement based on GeekForGeek. Its at queue2.java
+
+**Lesson Learned**: where there is slightly more complicate math, like (rear==(front-1)%(size-1))), make example...(but maybe writing it on the code is not such a good idea but it makes the code messier, I wish I can attach a sticky note to the code, but because its coding it must be a document, but having the property of a adherent feature is difficult. I have to be creative to solve this problem, or I just deal with it as it is. 
+	
+If its on paper, I will have it on a draft paper, but I also want to keep the notes. What do I do? 
+
+Because of this, computer science note is destined to be messy.
+
+Or I should not keep the notes.
+
+Whats the goal? Keep my calculation, and be reminded of how I solve this problem. Because of this, I can have a "Tips and Tricks section")
+
+I think its a good idea. Is there a better idea?
+
+What would be the format of Tips and Tricks. Reference of page, calculation and notes, and lesson learned.
+* * *
+
+Whats next? Keep reading? Constructing Tips and Tricks? Dive deeper into Queue and combine the function from the book and from geekforgeek? Write more implementation from mycodeschool? but mycodeschool is not circular.
+
+Just check another implementation.     
+The way geekforgeek do it seems to be the standard.
+
+Now another question, there are some many ways to implement a data structure, how do I make peace of it.
+
+Just remember one? Learn the pseudo code?
+
+Anyways, what makes them different?
+
+I want to compare all of them and figure out their code structure and figure out what makes them different.    
+But its very time consuming     
+In the term of Myers-briggs, it is my Ni trying to figure out the why, for sure I can't use Si to remember them, but if I know the pseudo code, and able to implement it, then I pass the test.
+Si to remember the pseudo code.    
+yeah, what exactly is the pseudo code for queue, maybe I will have another text file for pseudo code
+
+Looking back, just figuring out Queue implementation took 2 months from March to May, luckily I can do it in my own pace by self-studying
+
