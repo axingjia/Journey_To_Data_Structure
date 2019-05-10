@@ -99,6 +99,8 @@ target="_ blank">Queue Array Implementation</a>
 
 (2 months has passed. I am coming back from a digression of reading the queue implementation. Just can't figure out why rear has to equal to -1 and can't be 0, and if I can make it to become 0)
 
+
+### Try to solve Queue Implementation 
 So there are two problems I have, 1. why rear is -1 and front is 0, 2. why rear is on the left and front is on the right of the array.
 
 Third question, there are many kinds of implementation of Queue, which one is correct, which use should I use? Which one should I write it into my notes
@@ -106,23 +108,23 @@ Third question, there are many kinds of implementation of Queue, which one is co
 To answer this question, I need to figure out one of them, and implement it correctly and then write down the code, which is the hardest part, because I can't break down the construction of implementation process.
 
 <a href="https://www.youtube.com/watch?v=okr-XE8yTO8" 
-target="_ blank">Queue explaination by someone which rear and front are -1, which is more understandable</a>
+target="_ blank">[mycodeschool]Queue explaination by someone which rear and front are -1, which is more understandable</a>
 
 By the explaination is too fast, I kind of understand the pseudo code, but not totally, still very vague
 
 Tried looking up to google, the text format is too hard to distill.
 
 <a href="https://www.geeksforgeeks.org/circular-queue-set-1-introduction-array-implementation/" 
-target="_ blank">Another circular queue implementation that has rear and front equals to -1.</a>
+target="_ blank">[circular queue webpage geekforgeek]Another circular queue implementation that has rear and front equals to -1.</a>
 
 <a href="https://www.youtube.com/watch?v=wjI1WNcIntg" 
 target="_ blank">Queue in Linked List</a>
 
 <a href="https://www.youtube.com/watch?v=gnYM_G1ILm0" 
-target="_ blank">Another queue implementation that has rear on the right</a>
+target="_ blank">[some random youtuber]Another queue implementation that has rear on the right</a>
 
 <a href="https://www.youtube.com/watch?v=q5oOYxfOD1c" 
-target="_ blank">Another queue implementation that has rear equals to capacity - 1</a>
+target="_ blank">[geekforgeek video]Another queue implementation that has rear equals to capacity - 1</a>
 
 So the implementation in this book is largely simplify.    
 The implementation doesn't do error checking like checking if full for insert
@@ -146,4 +148,16 @@ It also has a front!=0 check for the wrap around condition, why? One obvious rea
 For the remove/dequeue, do an empty check,
 
 One difference between front=0 vs =1 is the other functions.
+
+I actually really want to just forget the implementation from the book, and just write down the implementation from geekforgeek and mycodeschool
+
+I need a bigger screen to write the implementation, or even better double screen. I can use my ipad to read, I can download the book to ipad and read it there. Or I can just do it with a laptop
+
+Okay I was writing the circular implementation from geekForgeek, this (rear==(front-1)%(size-1))) is confusing me.
+
+When enqueue, front doesn't wrap around if front is bigger than the array size.
+
+(A few minutes later)
+
+Oh crap, front doesn't move with enqueue, it wraps around at dequeue, my bad
 
