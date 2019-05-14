@@ -10,7 +10,7 @@ Some useful stuff
 <img src="assets/adv_disadv_1.png">
 <img src="assets/adv_disadv_2.png">
 
----
+---Done Chapter 1
 
 Array:
 Insert: 1 step

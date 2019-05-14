@@ -117,12 +117,39 @@ public long peekFront() // peek at front of queue
     // public void frontAndRear(){
     //     System.out.println("Front is "+this.front+",rear is "+this.rear);
     // }
+	
+	public void displayQueue(){
+		if(front==-1){
+			System.out.println("\nQueue is empty");
+			return;
+		}
+		// printf("\nElements in Circular Queue are: "); 
+		System.out.println("\nElements in Circular Queue are: ");
+	    if (rear >= front) 
+	    { 
+	        for (int i = front; i <= rear; i++) 
+	            // printf("%d ",arr[i]);
+				System.out.println(arr[i]); 
+	    } 
+	    else
+	    { 
+	        for (int i = front; i < size; i++) 
+	            // printf("%d ", arr[i]);
+				System.out.println(arr[i]); 
+				 
+	  
+	        for (int i = 0; i <= rear; i++) 
+	            // printf("%d ", arr[i]); 
+				System.out.println(arr[i]); 
+	    } 
+
+	}
 } // end class Queue ////////////////////////////////////////////////////////////////
 class QueueApp2
 {
 public static void main(String[] args)
  {
-Queue theQueue = new Queue(5);// queue holds 5 items
+Queue2 theQueue = new Queue2(5);// queue holds 5 items
 theQueue.insert(10); theQueue.insert(20); theQueue.insert(30); theQueue.insert(40); // insert 4 items
 // theQueue.arrayPrint();
 
@@ -149,9 +176,10 @@ theQueue.insert(70);
 // theQueue.arrayPrint();
 // System.out.println("");
 theQueue.insert(80); // insert 4 more items // (wraps around)
-theQueue.arrayPrint();
+// theQueue.arrayPrint();
 // System.out.println("");
-theQueue.print();
+// theQueue.print();
+theQueue.displayQueue();
 
 //MY WAY will: rear 0: 0th element=10, 1st=20
 } // end main()
