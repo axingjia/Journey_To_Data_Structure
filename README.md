@@ -13,11 +13,11 @@ Some useful stuff
 ---Done Chapter 1
 
 Array:
-Insert: 1 step
-Search: N, average N/2
-Delete: Search and move the rest of the array
+Insert: 1 step    
+Search: N, average N/2    
+Delete: Search and move the rest of the array    
 
----
+* * *
 
 A bit of digression:
 
@@ -30,7 +30,11 @@ target="_ blank">
 alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" />
 </a>
 
----
+* * *
+
+### Chapter 3 Sort
+
+(**Tips: when thinking about 2d array, thinking of it as when outter array is 0, inner array goes from 0 to n** no from the big picture, it wouldnt make sense that way)
 
 Start of the construction of my review question:
 [Review Question](./review_questions)
@@ -62,7 +66,7 @@ All the algorithms in this chapter are stable. For example, notice the output of
 Comparing the sorts
 The selection sort minimizes the number of swaps, but the number of comparisons is still high. This sort might be useful when the amount of data is small and swapping data items is very time-consuming compared with comparing them.
 
-MY: selection sort is picking the position, and put the right item at that position. insertion sort is getting the next item, and put it at the left pile while maintaining its sortedness on the left pile
+**MY: selection sort is picking the position, and put the right item at that position. insertion sort is getting the next item, and put it at the left pile while maintaining its sortedness on the left pile**
 
 # Chapter 4
 
