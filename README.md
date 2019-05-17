@@ -201,3 +201,25 @@ yeah, what exactly is the pseudo code for queue, maybe I will have another text 
 
 Looking back, just figuring out Queue implementation took 2 months from March to May, luckily I can do it in my own pace by self-studying
 
+### Deques 
+("we won't explore it further here")
+
+### Priority Queue
+like an ordinary queue, a priority queue has a front and a rear; however, in a priority queue, items are ordered by key value so that the item with the lowest key is always at the front. Items are inserted in the proper position to maintain the order
+
+(Priority queue will be used in finding something called a minimum spanning tree for a graph in Chapter 14, "weighted graphs")
+
+(In a preemptive multitasking operating system, for example, program may be placed in a priority queue so the highest priority program is the next one to receive a time-slice that allows it to execute)
+
+You also awnt a priority queue to provide fairly quick insertion. Because of that, priority queue is often implemented witha data structure called a heap.
+
+In this chapter, we will implement
+
+(Okay, in this book, the front is at nElement-1, and not at index 0, which is different from other common implementations)
+
+so what to do here..I can jog down this implementation, and then explore the common implementation, and then figure out the difference. Yes, this is the high way to go.
+
+Jog down this implementation done, the implementation is largely different, the rear is at the beginning of the array and the rear is at the right, enqueue is on the left O(n) and delete is on the right.
+
+But isn't normally the enqueue is 
+
