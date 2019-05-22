@@ -221,5 +221,33 @@ so what to do here..I can jog down this implementation, and then explore the com
 
 Jog down this implementation done, the implementation is largely different, the rear is at the beginning of the array and the rear is at the right, enqueue is on the left O(n) and delete is on the right.
 
-But isn't normally the enqueue is 
+But isn't normally the enqueue is on the right?
+
+** The real problem is, there is no front and rear pointer**
+
+Also, this implementation doesn't check if array is full 
+
+### Parsing arithmetic Expression
+for example: 2*(3+4) or ((2+4)*7)+3*(9–5)
+
+It's easier for the algorithm to use a two-step process: 
+1. Transform the arithmetic expression into a different format, called postfix notation
+2. Evaluate the postfix expression
+
+#### Postfix Notation
+2+2 and 4/7 is called infix notation
+
+In postfix notation , the operator follows the two operands. Thus A+B becomes AB+, a/b becomes AB/. More complex infix expressions can likewise be translated into postfix notation
+
+A+B–C   AB+C–      
+A*B/C   AB*C/     
+A+B*C   ABC*+     
+A*B+C   AB*C+     
+A*(B+C)   ABC+*     
+A*B+C*D   AB*CD*+     
+(A+B)*(C–D)   AB+CD–*     
+((A+B)*C)–D   AB+C*D–     
+A+B*(C–D/(E+F))   ABCDEF+/–*+     
+
+Page 151
 
