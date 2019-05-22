@@ -295,5 +295,72 @@ Other languages, such as C++, handle objects quite differently than Java. In C++
 		
 actually contains an object of type Link. You can’t write a self-referential class definition in C++ (although you can put a pointer to a Link in class Link; a pointer is similar to a reference). C++ programmers should keep in mind how Java handles objects; this usage may be counter-intuitive.	
 
+		class LinkList
+		{
+		private Link first; // ref to first link on list
+		// -------------------------------------------------------------
+		public void LinkList() // constructor
+		{
+		first = null; // no items on list yet
+		}
+		// -------------------------------------------------------------
+		public boolean isEmpty() // true if list is empty
+		{
+		return (first==null);
+		}
+		// -------------------------------------------------------------
+		// ... other methods go here
+		}
 
-page 187	
+
+**IMPORTANT**:
+
+		public void insertFirst(int id, double dd)
+		{ // make new link
+			Link newLink = new Link(id, dd);
+			newLink.next = first; // newLink --> old first
+			first = newLink; // first --> newLink
+		}
+		
+the new node's next point to the first, and first points to new pointer... This is a mess.
+
+MY:Okay, when the first is on the right, it is the object; when its on the left, it is the reference, Let's think of it this way. This might be the key point I have been missing.
+
+Lets think deeper. What if head is the object. then the third statement will not make sense.    
+What if head is just the reference. Then new_node.next will point to what head points to, and first is also pointing to newLink. This can make sense too. So which one is the right one.
+
+One thing to notice is head is a pointer that doesn't have a next reference. Head is just a reference. so newLink.next = first; actually is just the new node pointing what the first/head is referencing. And first = newLink; is the reference, which doesn't change address, pointing to the object of the new node.
+
+###### The deleteFirst method 
+This method is the reverse of insertFirst(). It disconnects the first link by rerouting first to point to the second link.
+
+		public Link deleteFirst() // delete first item
+		{                         // (assumes list not empty)
+			Link temp = first; // save reference to link
+			first = first.next; // delete it: first-->old next
+			return temp; // return deleted link
+		}
+temp is the reference of the object of where first points to. first reference now points to the next which belongs to where the first points to.
+
+Notice that the deleteFirst() method assumes the list is not empty. Before calling it, your program should verify this fact with the isEmpty() method.
+
+###### The displayList() Method
+To display the list, you start at first and follow the chain of references from link to link. A variable current points to (or technically refers to) each link in turn. It starts off pointing to first, which holds a reference to the first link. The statement
+
+		current = current.next;
+		
+changes current to point to the next link because that’s what’s in the next field in each link. Here’s the entire displayList() method:
+
+		public void displayList()
+		{
+		System.out.print(“List (first-->last): “);
+		Link current = first; // start at beginning of list
+		while(current != null) // until end of list,
+		{
+		current.displayLink(); // print data
+		current = current.next; // move to next link
+		}
+		System.out.println(“”);
+		}
+
+page 189	
