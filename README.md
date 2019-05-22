@@ -258,3 +258,42 @@ Just make the postFix evaluation working too, but how it works is unclear, or sh
 Nice, chapter 5 now 
 
 ### Chapter 5, Linked Lists
+
+In chapter 2, "array", we saw we saw that arrays had certain disadvantages as data storage structures. In an unordered array, searching is slow, whereas in an ordered array, insertion is slow. In both kinds of arrays, deletion is slow. Also, the size of an array can’t be changed after it’s created.
+
+In this chapter we will look at a data storage structure that solves some of these problems: the *linked list*.
+
+Most of the time you can use a linked list in many cases in which you use an array, unless you need frequent random access to individual item using an index
+
+Link (MY: aka node):
+
+		class Link
+		{
+		public int iData; // data
+		public double dData; // data
+		public Link next; // reference to next link
+		}
+
+### Reference and Basic Types
+Being able to put a field of type Link inside the class definition of this same type may seem odd. Wouldn’t the compiler be confused? How can it figure out how big to make a Link object if a link contains a link and the compiler doesn’t already know how big a Link object is?
+
+The answer is that in Java a Link object doesn’t really contain another Link object, although it may look like it does. The next field of type Link is only a reference to another link, not an object.
+
+Note that in Java, primitive types such as int and double are stored quite differently than objects. Fields containing primitive types do not contain references, but actual numerical values like 7 or 3.14159.
+
+A primitive type creates a space in memory and puts the number 65000.00 into this space. However, a reference to an object like
+
+		Link aLink = someLink;
+
+puts a reference to an object of type Link, called someLink, into aLink. The someLink object itself is located elsewhere. It isn’t moved, or even created, by this statement; it must have been created before. To create an object, you must always use new:
+
+		Link someLink = new Link();
+
+Other languages, such as C++, handle objects quite differently than Java. In C++ a field like
+
+		Link next;
+		
+actually contains an object of type Link. You can’t write a self-referential class definition in C++ (although you can put a pointer to a Link in class Link; a pointer is similar to a reference). C++ programmers should keep in mind how Java handles objects; this usage may be counter-intuitive.	
+
+
+page 187	
