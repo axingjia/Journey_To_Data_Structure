@@ -249,5 +249,7 @@ A*B+C*D   AB*CD*+
 ((A+B)*C)–D   AB+C*D–     
 A+B*(C–D/(E+F))   ABCDEF+/–*+     
 
-Page 151
+PS: this parsing algorithm only works for single digit numbers, although these expressions may evaluate to multidigit numbers
+
+Page 161
 
