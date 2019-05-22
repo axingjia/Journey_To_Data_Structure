@@ -251,5 +251,10 @@ A+B*(C–D/(E+F))   ABCDEF+/–*+
 
 PS: this parsing algorithm only works for single digit numbers, although these expressions may evaluate to multidigit numbers
 
-Page 161
+I just make the infix to postfix parse working, but how it works is still unclear. Anyways, I will try to figure it out later, with figuring out chapter 3.
 
+Just make the postFix evaluation working too, but how it works is unclear, or should I say, the pseudocode of making it work is unclear.
+
+Nice, chapter 5 now 
+
+### Chapter 5, Linked Lists
