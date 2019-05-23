@@ -353,14 +353,36 @@ changes current to point to the next link because that’s what’s in the next 
 
 		public void displayList()
 		{
-		System.out.print(“List (first-->last): “);
-		Link current = first; // start at beginning of list
-		while(current != null) // until end of list,
-		{
-		current.displayLink(); // print data
-		current = current.next; // move to next link
-		}
-		System.out.println(“”);
+			System.out.print(“List (first-->last): “);
+			Link current = first; // start at beginning of list
+			while(current != null) // until end of list,
+			{
+				current.displayLink(); // print data
+				current = current.next; // move to next link
+			}
+			System.out.println(“”);
 		}
 
-page 189	
+###### Finding and Deleting Specific Links
+
+This is the find code
+
+		public Link find(int key) // find link with given key
+		{ // (assumes non-empty list)
+			Link current = first; // start at 'first'
+			while(current.iData != key) // while no match,
+			{
+				if(current.next == null) // if end of list,
+					return null; // didn’t find it
+				else // not end of list,
+					current = current.next; // go to next link
+			}
+			return current; // found it
+		}
+		
+MY: One question I have is, why here it it has a if current.next==null check but displayList doesn't have it..? in find() it can stop before checking the null pointer which is also the tail. so it won't evaluate current.iData. I will change it around to give it a check to see if it will throw an error.
+
+Result: yes, it will throw a nullPointerException    
+Because I am doing null.iData, which will throw error
+
+page 196
