@@ -385,4 +385,11 @@ MY: One question I have is, why here it it has a if current.next==null check but
 Result: yes, it will throw a nullPointerException    
 Because I am doing null.iData, which will throw error
 
-page 196
+And delete makes sense too. I just need a way to remember insertFirst,deleteFirst,find, and delete
+
+### Double-End Lists
+Everything is the same as regular linklist except: a reference to the last link as well as to the first
+
+Access to the end of the list as well as the beginning makes the double-ended list suitable for certain situations that a single-ended list can’t handle efficiently. One such situation is implementing a queue
+
+page 198
