@@ -68,9 +68,9 @@ public Link find(int key) // find link with given key
     Link current = first; // start at 'first'
     while(current.iData != key) // while no match,
     {
-        // if(current.next == null) // if end of list,
-            // return null; // didn’t find it
-        // else // not end of list,
+        if(current.next == null) // if end of list,
+            return null; // didn’t find it
+        else // not end of list,
             current = current.next; // go to next link
     }
     return current; // found it

@@ -392,4 +392,57 @@ Everything is the same as regular linklist except: a reference to the last link 
 
 Access to the end of the list as well as the beginning makes the double-ended list suitable for certain situations that a single-ended list can’t handle efficiently. One such situation is implementing a queue
 
+
+		public void insertFirst(long dd) // insert at front of list
+		{
+		    Link newLink = new Link(dd); // make new link
+		    if( isEmpty() ) // if empty list,
+		        last = newLink; // newLink <-- last
+		    newLink.next = first; // newLink --> old first
+		    first = newLink; // first --> newLink
+		}
+		
+Why last =newlink??? Oh, it's when it's empty, then last will point to the first element that's entered, which is the last.
+
+		public void insertLast(long dd) // insert at end of list
+		{
+		    Link newLink = new Link(dd); // make new link
+		    if( isEmpty() ) // if empty list,
+		        first = newLink; // first --> newLink
+		    else
+		        last.next = newLink; // old last --> newLink
+		    last = newLink; // newLink <-- last
+		}
+
+when its empty, first and last point to the new node, if its not empty, last will point to new link and the previous will point to the new link.
+
+		public long deleteFirst() // delete first link
+		{ // (assumes non-empty list)
+		long temp = first.dData;
+		if(first.next == null) // if only one item
+
+		    last = null; // null <-- last
+		first = first.next; // first --> old next
+		return temp;
+		}
+
+when its the last element, last=null;
+
+Unfortunately, deleteing the last node won't be an option because there is still no reference to the next to last node, whose next field would need to be changed to null if the last node were deleted. To achieve that, you need doubly linkedlist
+
+### Time Efficiency
+Insertion and deletion is O(1)    
+Finding, deleting or inserting next to a specific item are O(N). An array is also O(N) for these operations, but the linked list is nevertheless faster because nothing needs to be moved when an item is inserted or deleted. The increased efficiency can be significant, epecially if a copy takes much longer than a comparison.
+
+### Abstract Data types
+In array implementation of stack, push and pop are as:
+
+	arr[++top]=data;
+	data=arr[top--];
+
+In linklist implementation of stack, it is:
+
+	theList.insertFirst(data)
+	data = theList.deleteFirst()
+
 page 198
