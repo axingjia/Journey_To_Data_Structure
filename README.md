@@ -1,8 +1,24 @@
-I am reading "Data Structure and Algorithm in Java" by Robert Lafore. I was reading another book with C++ before but honestly I don't feel comfortable and don't feel it's practical to learn data structure in C++ as a self-taught, because I will mainly only learn either Java or C++ for technical interview, so why use C++ when you can just use Java for easiness?
+I am revisiting Data Structure by reading "Data Structure and Algorithm in Java" by Robert Lafore. I was reading another book with C++ before but honestly I don't feel comfortable and don't feel it's practical to learn data structure in C++ as a self-taught, because I will mainly only learn either Java or C++ for technical interview, so why use C++ when you can just use Java for easiness?
 
 Let the journey of learning begin!
 
 PS: This project's purpose is mainly to document my learning experience of data structure, and hopefully by having the project and document it it will motivate me to stick it to the end. Cheers!
+
+Edit:5/24/2019:     
+Here are the advantages of taking notes on github, that I realized after 4 months into this:    
+1. The code is colorized
+2. You can check previous code conveniently because it's stored and organized
+3. You can copy and paste code from the textbook easily instead of spend eternity writing them down on a paper
+4. The note can be viewed anywhere
+5. The formating of writing on github is a lot easier, compared to try to organize it with paper
+6. Remembering where you have read to is a lot easier
+7. Documents are better organized
+
+Here are the advantages of reading it in actual code, compared to just reading pseudocode and try to write it yourself: (aka why I read this book)    
+1. You have something concrete to remember, instead of just remembering the process of the pseudocode
+2. One thing that I was very curious is about different implementation of the same code, pseudocode can't be compared. It's not concrete
+3. You don't need to waste time figuring out the actual code from pseudocode. 
+
 
 ---
 Some useful stuff
@@ -445,4 +461,34 @@ In linklist implementation of stack, it is:
 	theList.insertFirst(data)
 	data = theList.deleteFirst()
 
-page 198
+### ADT List
+You can insert an item, delete an item, and usually read an item from a specific location (the third item, say).
+
+Don't confuse the ADT list with the linked list. A list is defined by its interface: the specific methods used to interact with it. This interface can be implemented by various structures, including arrays and linked lists. The list is an abstraction of such data structures.
+
+### Sorted List 
+In general you can use a sorted list in most situations in which you use a sorted array. The advantages of a sorted list over a sorted array are speed of insertion (because elements don’t need to be moved) and the fact that a list can expand to fill available memory, while an array is limited to a fixed size. However, a sorted list is somewhat more difficult to implement than a sorted array
+
+A sorted list can also be used to implement a priority queue, although a heap is a more common implementation.
+
+		public void insert(long key) // insert in order
+		{
+			Link newLink = new Link(key); // make new link
+			Link previous = null; // start at first
+			Link current = first;
+			// until end of list,
+			while(current != null && key > current.dData)
+			{ // or key > current,
+				previous = current;
+				current = current.next; // go to next item
+			}
+			if(previous==null) // at beginning of list
+				first = newLink; // first --> newLink
+			else // not at beginning
+				previous.next = newLink; // old prev --> newLink
+			newLink.next = current; // newLink --> old current
+		} // end insert()
+		
+Okay, I checked the implementation of a simple linked list, the implementation is again a little bit different. It uses previous here and a simple linked list use first in its insertFirst.
+
+page 218
