@@ -492,3 +492,47 @@ A sorted list can also be used to implement a priority queue, although a heap is
 Okay, I checked the implementation of a simple linked list, the implementation is again a little bit different. It uses previous here and a simple linked list use first in its insertFirst.
 
 page 218
+
+## Chapter tree
+
+Digression here: I always want to make a file navigator in react, and file navigator requires tree I realize (than the normal dumb way of whatever I was using). Specifically a k-ary tree, and I need add function. (Actually thats basically it, just add function), well because its in react so its gonna be in javascript
+
+		function Node(data) {
+		    this.data = data;
+		    this.parent = null;
+		    this.children = [];
+		}
+		
+		function Tree(data) {
+		    var node = new Node(data);
+		    this._ root = node;
+		}
+
+
+		var tree = new Tree('CEO');
+		 
+		// {data: 'CEO', parent: null, children: []}
+		tree._ root;
+		
+		
+		var tree = new Tree('one');
+ 
+		tree._ root.children.push(new Node('two'));
+		tree._ root.children[0].parent = tree;
+		 
+		tree._ root.children.push(new Node('three'));
+		tree._ root.children[1].parent = tree;
+		 
+		tree._ root.children.push(new Node('four'));
+		tree._ root.children[2].parent = tree;
+		 
+		tree._ root.children[0].children.push(new Node('five'));
+		tree._ root.children[0].children[0].parent = tree._ root.children[0];
+		 
+		tree._ root.children[0].children.push(new Node('six'));
+		tree._ root.children[0].children[1].parent = tree._ root.children[0];
+		 
+		tree._ root.children[2].children.push(new Node('seven'));
+		tree._ root.children[2].children[0].parent = tree._ root.children[2];
+		
+So when click any item, the level of that level shows, all the children shows,
