@@ -11,3 +11,5 @@
 5. Write Queue in Linked List
 
 6. Write circular queue implementation with total error checking
+
+7. Write a double linked list implementation

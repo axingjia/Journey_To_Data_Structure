@@ -491,7 +491,97 @@ A sorted list can also be used to implement a priority queue, although a heap is
 		
 Okay, I checked the implementation of a simple linked list, the implementation is again a little bit different. It uses previous here and a simple linked list use first in its insertFirst.
 
-page 218
+### List Insertion Sort 
+Imagine you put an unsorted array into a sorted linklist, and then put it back to the array. This turns out to be substantially more efficient than the more usual insertion sort within an array. 
+
+However, each item is copied only twice: once from the array to the list and once from the list to the array. N*2 copies compares favorably with the insertion sort within an array, where there are about N^2 copies.
+
+The drawback of it is it takes twice the memory.
+
+### Doubly Linked lists
+
+		class Link
+		{
+		public long dData; // data item
+		public Link next; // next link in list
+		public link previous; // previous link in list
+		...
+		}
+		
+The upside is you can traverse backward, the downside is every time you insert or delete a link you must deal with four links instead of two: two attachments to the previous link and two attachments to the following one.
+
+Traverse backward:
+
+		Link current = last; // start at end
+		while(current != null) // until start of list,
+		current = current.previous; // move to previous link
+
+### Insertion 
+There are insertFirst(), insertLast(), and insertAfter() now
+
+Unless the list is empty, the insertFirst() routine changes the previous field in the old first link to point to the new link and changes the next field in the new link to point to the old first link. Finally, it sets first to point to the new link. 
+
+If the list is empty, the last field must be changed instead of the first.previous field.
+
+		if( isEmpty() ) // if empty list,
+		last = newLink; // newLink <-- last
+		else
+		first.previous = newLink; // newLink <-- old first
+		newLink.next = first; // newLink --> old first
+		first = newLink; // first --> newLink
+
+The insertLast() method is the same process applied to the end of the list; it’s a mirror image of insertFirst().
+
+First, the link with the specified key value must be found. This procedure is handled the same way as the find() routine in the linkList2.java program (Listing 5.2). Then, assuming we’re not at the end of the list, two connections must be made between the new link and the next link, and two more between current and the new link.
+
+If the new link will be inserted at the end of the list, its next field must point to null, and last must point to the new link. 
+
+		if(current==last) // if last link,
+		{
+		newLink.next = null; // newLink --> null
+		last = newLink; // newLink <-- last
+		}
+		else // not last link,
+		{
+		newLink.next = current.next; // newLink --> old next
+		// newLink <-- old next
+		current.next.previous = newLink;
+		}
+		newLink.previous = current; // old current <-- newLink
+		current.next = newLink; // old current --> newLink
+		
+There got to be some way to remember it, maybe coding it myself once will be a good idea? I will write the question in the review question page.
+
+		current.next.previous
+		
+means the previous field of the link referred to by the next field in the link current.
+
+### Deletion
+There are three deletion routines: deleteFirst(), deleteLast(), and deleteKey()
+
+Assuming the link to be deleted is neither the first nor the last one in the list, the next field of current.previous (the link before the one being deleted) is set to point to current.next (the link following the one being deleted), and the previous field of current.next is set to point to current.previous. 
+
+MY: Again, I need some way to remember it
+
+		if(current==first) // first item?
+		first = current.next; // first --> old next
+		else // not first
+		// old previous --> old next
+		current.previous.next = current.next;
+		if(current==last) // last item?
+		last = current.previous; // old previous <-- last
+		else // not last
+		// old previous <-- old next
+		current.next.previous = current.previous;
+		
+[The implementation](./workable/DoublyLinked.java)
+
+The deletion methods and the insertAfter() method assume that the list isn’t empty
+
+### Doubly Linked List as Basis for Deques
+A doubly linked list can be used as the basis for a deque, mentioned in the preceding chapter. In a deque you can insert and delete at either end, and the doubly linked list provides this capability.
+
+page 231
 
 ## Chapter tree
 
