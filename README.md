@@ -645,7 +645,18 @@ is not always easy. An insertBefore() method works best in the iterator, but an
 insertFirst() routine that always inserts at the beginning of the list might be more
 appropriate in the list class. We’ve kept a displayList() routine in the list, but this operation could also be handled with getCurrent() and nextLink() calls to the iterator.
 
-page 235
+[iterator implementation](./workable/interIterator.java)
+
+
+When you delete an item with deleteCurrent(), should the iterator end up pointing
+to the next item, to the previous item, or back at the beginning of the list? Keeping
+the iterator in the vicinity of the deleted item is convenient because the chances are
+the class user will be carrying out other operations there. However, you can’t move it
+to the previous item because there’s no way to reset the list’s previous field to the
+previous item. (You would need a doubly linked list for that task.) Our solution is to
+move the iterator to the link following the deleted link. If we’ve just deleted the item at the end of the list, the iterator is set to the beginning of the list.
+
+page 242
 
 ## Chapter tree
 
