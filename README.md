@@ -578,10 +578,74 @@ MY: Again, I need some way to remember it
 
 The deletion methods and the insertAfter() method assume that the list isn’t empty
 
+
+
 ### Doubly Linked List as Basis for Deques
 A doubly linked list can be used as the basis for a deque, mentioned in the preceding chapter. In a deque you can insert and delete at either end, and the doubly linked list provides this capability.
 
-page 231
+
+### Iterator
+A data structure that allows you step from link to link    
+A reference called current that is incremented to move to the next link    
+However, how many references are needed. There really isn't an answer. Thus, it seems easier to allow the user to create as many such references as necessary.    
+To make this possible in an object-oriented language, it's natural to embed each reference in a class object. This object can't be the same as the list class because there;s only one list object, so it is normally implemented as a separate class
+
+To use such an iterator, the user might create a list and then create an iterator object associated with the list. Actually, as it turns out, letting the list create the iterator is easier, so it can pass the iterator certain information, such as a reference to its first field. 
+
+
+		public static void main(...)
+		{
+		LinkList theList = new LinkList(); // make list
+		ListIterator iter1 = theList.getIterator(); // make iter
+		Link aLink = iter1.getCurrent(); // access link at iterator
+		iter1.nextLink(); // move iter to next link
+		}
+		
+The iterator always points to some link in the list. It’s associated with the list, but it’s not the same as the list or the same as a link. 
+
+### Additional Iterator Features
+We’ve seen several programs in which the use of a previous field made performing certain operations simpler, such as deleting a link from an arbitrary location. Such a field is also useful in an iterator.
+
+Also, it may be that the iterator will need to change the value of the list’s first field—for instance, if an item is inserted or deleted at the beginning of the list. If the iterator is an object of a separate class, how can it access a private field, such as first, in the list? One solution is for the list to pass a reference from itself to the iterator when it creates the iterator. This reference is stored in a field in the iterator. The list must then provide public methods that allow the iterator to change first. These LinkList methods are getFirst() and setFirst(). (The weakness of this approach is that these methods allow anyone to change first, which introduces an element of risk.)
+
+		class ListIterator()
+		{
+		private Link current; // reference to current link
+		private Link previous; // reference to previous link
+		private LinkList ourList; // reference to “parent” list
+		public void reset() // set to start of list
+		{
+		current = ourList.getFirst(); // current --> first
+		previous = null; // previous --> null
+		}
+		public void nextLink() // go to next link
+		{
+		previous = current; // set previous to this
+		current = current.next; // set this to next
+		}
+		...
+		}
+		
+The nextLink need to be looked into a little more closely in the future
+
+### Iterator Methods
+All operations previously performed by the class that involve iterating through the list, such as insertAfter(), are more naturally performed by the iterator.
+
+List of methods:
+* reset() -- Sets the iterator the start of the list 
+* nextLink()--move the iterator the next link 
+* getCurrent()--returns the link at the iterator
+* atEnd-- Return true if the iterator is at the end of the list
+* insertAfter()
+* insertBefore()
+* deleteCurrent()
+
+Deciding which tasks should be carried out by an iterator and which by the list itself
+is not always easy. An insertBefore() method works best in the iterator, but an
+insertFirst() routine that always inserts at the beginning of the list might be more
+appropriate in the list class. We’ve kept a displayList() routine in the list, but this operation could also be handled with getCurrent() and nextLink() calls to the iterator.
+
+page 235
 
 ## Chapter tree
 
