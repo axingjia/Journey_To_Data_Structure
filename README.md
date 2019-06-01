@@ -658,8 +658,6 @@ to the previous item because there’s no way to reset the list’s previous fie
 previous item. (You would need a doubly linked list for that task.) Our solution is to
 move the iterator to the link following the deleted link. If we’ve just deleted the item at the end of the list, the iterator is set to the beginning of the list.
 
-page 242
-
 Traverse a list
 
 		iter1.reset(); // start at first
@@ -706,7 +704,47 @@ Other methods like **find()** and **replace()**. This is up for exercise
 
 ## 6. Recursion
 
+Intuitive way of coming out the solution of triangular number:    
+1.First, think of it as combination of 2 components. In this case, n and the sum of the remaining column.
 
+		int triangle(int n)
+		{
+		return( n + sumRemainingColumns(n) ); // (incomplete version)
+		}
+		
+however, that the sum of all the remaining columns for term n is the same as the sum of all the columns for term n-1. Thus, if we knew about a method that summed all the columns for term n, we could call it with an argument of n-1 to find the sum of all the remaining columns for term n:
+
+		int triangle(int n)
+		{
+		return( n + sumAllColumns(n-1) ); // (incomplete version)
+		}
+		
+Then it becomes:
+
+		int triangle(int n)
+		{
+		return( n + triangle(n-1) ); // (incomplete version)
+		}
+		
+Passing the buck:    
+but in this way, the buck is continuously passed down 
+
+The buck stop here:
+
+To prevent an infinite regress, the person who is asked to find the first triangular number of the series, when n is 1, must know, without asking anyone else, that the answer is 1. There are no smaller numbers to ask anyone about, there’s nothing left to add to anything else, so the buck stops there. We can express this by adding a condition to the triangle() method:
+
+		int triangle(int n)
+		{
+		if(n==1)
+		return 1;
+		else
+		return( n + triangle(n-1) );
+		}
+
+
+### Anagram
+
+page 264
 
 ## Chapter tree
 
