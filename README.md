@@ -647,6 +647,8 @@ appropriate in the list class. We’ve kept a displayList() routine in the list,
 
 [iterator implementation](./workable/interIterator.java)
 
+MY: how linklist encapsulate iterator is interesting too. It has a function that return a new iterator that accepts a parameter of a linked list object, replaced with this keyword.
+
 
 When you delete an item with deleteCurrent(), should the iterator end up pointing
 to the next item, to the previous item, or back at the beginning of the list? Keeping
@@ -657,6 +659,54 @@ previous item. (You would need a doubly linked list for that task.) Our solution
 move the iterator to the link following the deleted link. If we’ve just deleted the item at the end of the list, the iterator is set to the beginning of the list.
 
 page 242
+
+Traverse a list
+
+		iter1.reset(); // start at first
+		long value = iter1.getCurrent().dData; // display link
+		System.out.println(value + “ “);
+		while( !iter1.atEnd() ) // until end,
+		{
+		iter1.nextLink(); // go to next link,
+		long value = iter1.getCurrent().dData; // display it
+		System.out.println(value + “ “);
+		}
+
+Sample Code:
+
+	class InterIterApp
+	{
+	public static void main(String[] args) throws IOException
+	{
+	LinkList theList = new LinkList(); // new list
+	ListIterator iter1 = theList.getIterator(); // new iter
+	iter1.insertAfter(21); // insert links
+	iter1.insertAfter(40);
+	iter1.insertAfter(30);
+	iter1.insertAfter(7);
+	iter1.insertAfter(45);
+	theList.displayList(); // display list
+	iter1.reset(); // start at first link
+	Link aLink = iter1.getCurrent(); // get it
+	if(aLink.dData % 3 == 0) // if divisible by 3,
+	iter1.deleteCurrent(); // delete it
+	while( !iter1.atEnd() ) // until end of list,
+	{
+		iter1.nextLink(); // go to next link
+	aLink = iter1.getCurrent(); // get link
+	if(aLink.dData % 3 == 0) // if divisible by 3,
+	iter1.deleteCurrent(); // delete it
+	}
+	theList.displayList(); // display list
+	} // end main()
+	} // end class InterIterApp
+
+
+Other methods like **find()** and **replace()**. This is up for exercise
+
+## 6. Recursion
+
+
 
 ## Chapter tree
 
