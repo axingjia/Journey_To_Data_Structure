@@ -744,7 +744,49 @@ To prevent an infinite regress, the person who is asked to find the first triang
 
 ### Anagram
 
-page 264
+Anagram is hard.
+
+And there are so many ways to implement it. I am gonna find all of them.
+
+		public static void doAnagram(int newSize)
+		{
+		if(newSize == 1) // if too small,
+		return; // go no further
+		for(int j=0; j<newSize; j++) // for each position,
+		{
+		doAnagram(newSize-1); // anagram remaining
+		if(newSize==2) // if innermost,
+		displayWord(); // display it
+		rotate(newSize); // rotate word
+		}
+		}
+
+* Ok my thinking process goes from I don't get it    
+* To maybe there are resource that helps me understand it    
+* To I don't get that either or I can't find the same thing(divide into its too long, too many code, too dense)    
+* Back to maybe reading the section again can help    
+* reading through the whole thing now finally and still don't get it(divide into thinking about not getting it and reading the next line and get something)    
+* Now thinking I need to know more about recursion before I can solve this anagram problem
+* Now I draw recursive function call on paper    
+* Now what's display word    
+So the function call looks like a k-ary tree basically,    
+* Now I am thinking I need to read other implementation because this implementation is "different"
+* the implementation is definitely different. Some other implementation is based on **swap** and not **rotate**
+[Swap implementation](https://www.youtube.com/watch?v=AfxHGNRtFac&t=343s)
+* Now I have a decision to whether dive into it or check more implementation
+* Now I thought about knowing recursion in a bigger picture and maybe go through recursion videos in mycodeschool
+* now I am wondering the pattern between recursive call tree and the structure of recursive function(graphical representation)
+* One thing between reading science and liberal art. For science if you don't understand something, you don't proceed.
+* realize the pattern of recursive call must be figured out by writing code, or reading more code. I do hope theres a video talking about tips on different pattern though.
+* Now I am thinking I should watch all the recursion videos on youtube
+* find a course on [recursion](https://www.udemy.com/recursion-for-programmers/)
+* **The last 5 steps go wrong** I shouldn't check the big picture.
+* Spend 3 hours and still can't figure it out, maybe I should look for helps
+
+
+
+
+page 266
 
 ## Chapter tree
 
