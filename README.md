@@ -783,8 +783,54 @@ So the function call looks like a k-ary tree basically,
 * **The last 5 steps go wrong** I shouldn't check the big picture.
 * Spend 3 hours and still can't figure it out, maybe I should look for helps
 
+(The next day)
 
+* Okay, I watched some videos on [here](https://www.youtube.com/watch?v=78t_yHuGg-0&list=RDQMaaAa5TOUq40&index=25). This seems to be the standard implementation of permutation of a string.
+* Visited back the geekforgeek [implementation](https://www.geeksforgeeks.org/write-a-c-program-to-print-all-permutations-of-a-given-string/) of swap. Don't get it
 
+* The standard implementation:
+
+		void permutation helper(String s, String chosen){
+			if(s.empty()){
+				System.out.println(chosen);
+			}else{
+				fo(int i=0; i<s.length();i++){
+					char c=s.charAt(i);
+					chosen+=c;
+					s.erase(i,1);
+					permuteHelper(s,chosen);
+					s.insert(i,1,c);
+					chosen.erase(chosen.length()-1,1)
+				}
+			}
+		}
+
+* Print only once:
+
+		void permutation helper(String s, String chosen, Set<string>alreadyPrinted){
+			if(s.empty()){
+				if(!alreadyPrint.contain(chosen)){
+					System.out.println(chosen);
+					alreadyPrinted.add(chosen);
+				}
+			}else{
+				fo(int i=0; i<s.length();i++){
+					char c=s.charAt(i);
+					chosen+=c;
+					s.erase(i,1);
+					permuteHelper(s,chosen,alreadyPrinted);
+					s.insert(i,1,c);
+					chosen.erase(chosen.length()-1,1)
+				}
+			}
+		}
+
+* Realize a concept called backtracking
+* Just find out there's explanation on backtracking on The Algorithm Design Textbook
+* I now have a decision on whether continue to explore youtube and textbook or dive into backtracking in Algorithm Design Textbook, or search backtracking on youtube or google
+* Finish up the other half of geekforgeek swap implementation. Finally getting it.(MY: I might not able to absorb dense material that easily, but I think everyone at the beginning is the same?)
+* Making a decision, expand on more by exploring is expand my knowledge in recursion, reading backtracking and searching backtracking is expanding my knowledge in backtracking. So in fact, I don't need to do any of them.
+* case close, have covered everything related to this permutation question
 
 page 266
 
