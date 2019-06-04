@@ -832,6 +832,35 @@ So the function call looks like a k-ary tree basically,
 * Making a decision, expand on more by exploring is expand my knowledge in recursion, reading backtracking and searching backtracking is expanding my knowledge in backtracking. So in fact, I don't need to do any of them.
 * case close, have covered everything related to this permutation question
 
+
+### Recursive Binary Search
+
+		private int recFind(long searchKey, int lowerBound,
+		int upperBound)
+		{
+		int curIn;
+		curIn = (lowerBound + upperBound ) / 2;
+		if(a[curIn]==searchKey)
+		return curIn; // found it
+		else if(lowerBound > upperBound)
+		return nElems; // can’t find it
+		else // divide range
+		{
+		if(a[curIn] < searchKey) // it’s in upper half
+		return recFind(searchKey, curIn+1, upperBound);
+		else // it’s in lower half
+		return recFind(searchKey, lowerBound, curIn-1);
+		} // end else divide range
+		} // end recFind()
+
+
+		public int find(long searchKey)
+		{
+		return recFind(searchKey, 0, nElems-1);
+		}
+		
+### The Towers of Hanoi
+
 page 266
 
 ## Chapter tree

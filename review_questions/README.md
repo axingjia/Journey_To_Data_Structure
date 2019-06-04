@@ -13,3 +13,5 @@
 6. Write circular queue implementation with total error checking
 
 7. Write a double linked list implementation
+
+8. Write array insert implementation
