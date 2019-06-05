@@ -908,6 +908,13 @@ So I guess why at the very beginning I don't get it is because there are too man
 
 So Tower of Hanoi goes from the big picture to the smaller one, binary search is divide and conquer. Fibinaci and factorial goes from smaller case to bigger case
 
+Let me just read the textbook for once to get a sense where I feel I don't get it    
+Okay, I missed the detail of source rod, imtermediate rod and destination rod.    
+By the time I read the code and read the largest text of printed text, I lose direction and decided it didn't make sense    
+So the lesson learned here is to pay closer attention to algorithm logic explanation.
+And then I watched through geekforgeek explanation and realized about the logic, read through the logic and then come back to geekforgeek and realize the importance of auxilary rod, and figure it out.    
+Case closed
+
 page 279
 
 ## Chapter tree
