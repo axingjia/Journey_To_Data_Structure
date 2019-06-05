@@ -835,6 +835,7 @@ So the function call looks like a k-ary tree basically,
 
 ### Recursive Binary Search
 
+
 		private int recFind(long searchKey, int lowerBound,
 		int upperBound)
 		{
@@ -861,7 +862,53 @@ So the function call looks like a k-ary tree basically,
 		
 ### The Towers of Hanoi
 
-page 266
+A bit variation away from the book to make it look like from geekforgeek
+
+		////////////////////////////////////////////////////////////////
+		class TowersApp
+		{
+		static int nDisks = 3;
+		public static void main(String[] args)
+		{
+		doTowers(nDisks, ‘A’,  ‘C’, ‘B’);
+		}
+		//-----------------------------------------------------------
+		public static void doTowers(int topN,
+		char from, , char to,char inter)
+		{
+		if(topN==1)
+		System.out.println(“Disk 1 from “ + from + “ to “+ to);
+		else
+		{
+		doTowers(topN-1, from, inter,to); // from-->inter
+		System.out.println(“Disk “ + topN +
+		“ from “ + from + “ to “+ to);
+		doTowers(topN-1, inter,  to,from); // inter-->to
+		}
+		}
+		//----------------------------------------------------------
+		} // end class TowersApp
+		////////////////////////////////////////////////////////////////
+		
+Read through this and have no idea what happens.    
+GeekforGeek has the same implementation    
+
+Okay, I watch geekforgeek and its video [here](https://www.geeksforgeeks.org/c-program-for-tower-of-hanoi/). The code makes sense now, but how does anyone able to come up this solution from scratch??
+
+A digression here. The udemy recursion course is on sale. Watching it now. So far it isn't very useful, it's very beginner material, but it does give me a better view of how recursion visually looks like.    
+For example, if you have code above and below will be like many boxes containing one after the other. A for loop wraps around a recursive call will be like k-ary tree.     
+And there is a way to step through recursive function with debugger.
+
+Back to Tower of Hanoi. I understand the logic of it now, but how does it comes to the code??    
+Ok I kind of get it now, it uses the auxilary rod to act as the middle man to transfer smaller rode    
+Watching the geekforgeek visualization really helps so doTower(3,fromA,toB,auxiC) can break down into doTower(2,fromA,toC,auxiB ) , from fromA to toB, and doTower(2,fromC,toB,auxiA), and pretty much goes from there    
+Case close
+
+So I guess why at the very beginning I don't get it is because there are too many information right at the beginning with all the call stack and there is no direction. After watching the visualization and the logic between Tower of Hanoi I can get it now.
+
+So Tower of Hanoi goes from the big picture to the smaller one, binary search is divide and conquer. Fibinaci and factorial goes from smaller case to bigger case
+
+page 279
 
 ## Chapter tree
 
