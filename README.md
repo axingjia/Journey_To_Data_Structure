@@ -915,7 +915,62 @@ So the lesson learned here is to pay closer attention to algorithm logic explana
 And then I watched through geekforgeek explanation and realized about the logic, read through the logic and then come back to geekforgeek and realize the importance of auxilary rod, and figure it out.    
 Case closed
 
-page 279
+### Mergesort
+if N is 10,000, then N^2 is 100,000,000, while N*logN is only 40,000. If sorting this many items reqquired 40 seconds with the mergesort, it would take almost 28 hours for the insertion sort.    
+Mergesort is also fairly easy to implement. It's conceptually easier than quicksort and the shell sort.    
+The downside of the mergesort is that it requires an addtional array in memeory, equal in size to the one being sorted.
+
+The heart of the mergesort algorithm is the merging of two already-sorted array.
+MY: essentially it is comparing two array, and put the smaller element to the new empty array
+
+[mergesort implementation from the book](.workable/merge.java)
+
+The merge() method has three while loops
+
+### Sorting by Merging
+The idea in the mergesort is to divide an array in half, sort each half, and then use the merge() method to merge the two halves into a single sorted array
+
+The way to do it is to divide the half into two quarters, sort each the quarter and merge them to make a sorted half. MY: so it's a divide an conquer method
+
+**MY: mergesort is like a diamond expanding and shrinking tree**
+
+You may wonder where all these subarrays are located in memory. Basically The subarrays are stored in sections of the workspace array. After each merge, the workspace array is copied back into the original array
+
+Many steps involve the mergeSort() method calling itself or returning. Comparisons and copies are performed only during the merge process.
+
+You can't see the merge happening because the workspace isn't shown. However, you can see the result when the appropriate section of the workspace is copied back into the original(visible) array
+
+		private void recMergeSort(long[] workSpace, int lowerBound,
+		int upperBound)
+		{
+		if(lowerBound == upperBound) // if range is 1,
+		return; // no use sorting
+		else
+		{ // find midpoint
+		int mid = (lowerBound+upperBound) / 2;
+		// sort low half
+		recMergeSort(workSpace, lowerBound, mid);
+		// sort high half
+		recMergeSort(workSpace, mid+1, upperBound);
+		// merge them
+		merge(workSpace, lowerBound, mid+1, upperBound);
+		} // end else
+		} // end recMergeSort
+		
+[The whole mergeSort implementation](./workable/mergeSort.java)
+
+There are many small things that I don't get/I need to pay attention to:
+1. mid is (lowerBound+upperBound)/2
+2. Base case is a return empty;
+3. highPtr at geekforgeek is called "m"
+4. inside merge() mid =highPtr-1
+5. To be honest, I like this implementation more than geekforgeek
+6. There is a step of copying workspace array to the real array "theArray"
+
+### Mergesort O(N*logN)??
+A way to look at it is that, sort 8 items requires 3 levels, each of which involves 8 copies. A level means all copies in to the same size subarray. In the first level, there are four 2-element subarrays, in the second level, there are two 4-element subarrays; and in the third level, there is one 8-element subarary. Each level has 8 elements, so again there are 3*8 or 24 copies
+
+page 292 
 
 ## Chapter tree
 
