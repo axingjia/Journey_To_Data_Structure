@@ -968,9 +968,25 @@ There are many small things that I don't get/I need to pay attention to:
 6. There is a step of copying workspace array to the real array "theArray"
 
 ### Mergesort O(N*logN)??
+To know the efficiency, we have to calculate the copying and the comparing, because they are the most time-consuming operation; that the recurive calls and return don't add much overhead.
+###### Number of copies
 A way to look at it is that, sort 8 items requires 3 levels, each of which involves 8 copies. A level means all copies in to the same size subarray. In the first level, there are four 2-element subarrays, in the second level, there are two 4-element subarrays; and in the third level, there is one 8-element subarary. Each level has 8 elements, so again there are 3*8 or 24 copies
 
-page 292 
+Actually, the items are not only copied into the workspace, they're also copies back into the original array. This doubles the number of copies, (so total copies is 2*N*logN)
+
+###### Number of Comparison
+In the mergesort algorithm, the number of comparisons is always somewhat less than the number of copies. 
+
+The maximum number of comparisons is always one less than the number of items being merged, and the minimum is half the number of items being merged
+
+<img src="assets/mergesort_comparison.png">
+
+### Eliminating Recursion 
+Is there a way to not use recursion? There is! by using stack.
+
+There is a close relationship between recursion and stacks
+
+page 295
 
 ## Chapter tree
 
