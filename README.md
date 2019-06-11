@@ -1012,6 +1012,15 @@ The sequence of numbers used to generate the intervals is called the interval se
 
 page 325
 
+### Partition 
+Notice that partitioning is not stable. That is, each group is not in the same order it
+was originally. In fact, partitioning tends to reverse the order of some of the data in
+each group.
+
+Page 330
+
+Just blew right through the shellsort implementation and partition implementation
+
 ## Chapter tree
 
 Digression here: I always want to make a file navigator in react, and file navigator requires tree I realize (than the normal dumb way of whatever I was using). Specifically a k-ary tree, and I need add function. (Actually thats basically it, just add function), well because its in react so its gonna be in javascript
