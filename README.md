@@ -986,7 +986,31 @@ Is there a way to not use recursion? There is! by using stack.
 
 There is a close relationship between recursion and stacks
 
+SKIP
+ 
 page 295
+
+*A bit of digression here. I can read about 10 pages everyday, anything more I feel overwhelmed for some reason, starting checking ahead and feel fatigued, maybe feeling a bit dense headed instead of fresh headed when first starting the day*
+
+### More interesting applications of recursion
+1. Raise a number to a power
+2. Knapsack problem
+3. Combination: (n, k) = (n – 1, k – 1) + (n – 1, k)
+page 306
+
+## Chapter 7: Advanced Sorting
+Shellsort is O(N*(logN)^2), and quicksort is O(N*logN). Shellsort is almost as easy to implement as mergesort, while quicksort is the fastest of all the general-purpose sorts
+
+### Shellsort
+Shellsort is good for medium-sized arrays, perhaps up to a few thousand items. It's not quite as fast as quicksort and other O(N*logN) sort, so it's not optimum for very large files. However, it's much faster than the O(N^2) sorts like the selection sort and the insertion sort.
+
+The worst-case performance is not significantly worse than the average performance. (The worst case performance for quicksort can be much worse unless precautions are taken). Some experts(Sedgewick) recommends starting with a Shellsort for almost any sorting project and changing to a more advanced sort, like quicksort, only if Shellsort proves too slow in practice.
+
+Shellsort is the improvement of insertion sort
+
+The sequence of numbers used to generate the intervals is called the interval sequence or gap sequence
+
+page 325
 
 ## Chapter tree
 
