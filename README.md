@@ -1012,6 +1012,25 @@ The sequence of numbers used to generate the intervals is called the interval se
 
 page 325
 
+for insertion sort implemention: [Insertion Sort](workable/selecSort.java)
+
+		public void insertionSort()
+		{
+		int in, out;
+		for(out=1; out<nElems; out++) { // out is dividing line
+		    long temp = a[out]; // remove marked item
+		    in = out; // start shifts at out
+		    while(in>0 && a[in-1] >= temp) // until one is smaller,
+		    {
+		        a[in] = a[in-1];  // shift item to right
+		        --in; // go left one position
+		        }
+		        a[in] = temp; // insert marked item
+		    } // end for
+		} // end insertionSort()
+		
+And with this [video](https://www.youtube.com/watch?v=3yUSDJVDk4E). Shellsort is figured out
+
 ### Partition 
 Notice that partitioning is not stable. That is, each group is not in the same order it
 was originally. In fact, partitioning tends to reverse the order of some of the data in
@@ -1020,6 +1039,15 @@ each group.
 Page 330
 
 Just blew right through the shellsort implementation and partition implementation
+
+Okay just figure out shellsort. So the key to figure out code is use some example array to walk through the steps. The video takes 16 minutes, so it's expected you will be walk it through for more than 16 minutes to figure it out.
+
+But after the first walkthrough, it's relatively easier to figure out what the code is for.
+
+I want to walk through partition myself this time. 
+
+*Walk through partition completely* Probably takes like 5 minutes.
+
 
 ## Chapter tree
 
