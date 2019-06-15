@@ -1077,7 +1077,11 @@ The test for preventing the left to go out of the array is by:
 
 leftPtr < right
 
-Page 341
+Just went through the quickSort implementation. The key of swapping the an element of the right group is with while( theArray[++leftPtr] < pivot ), leftPtr will always be a step ahead. This is explained in the part of "delicate code"
+
+Notice that leftptr starts from left-1, and rightptr starts from right, so rightptr starts from the pivot, so it starts out outside of the partition too. The reason why they start outside of the partition is because they will be incremented and decremented, respectively, before they’re used the first time
+
+Page 344
 
 ## Chapter tree
 
