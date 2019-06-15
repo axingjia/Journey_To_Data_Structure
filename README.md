@@ -1032,11 +1032,8 @@ for insertion sort implemention: [Insertion Sort](workable/selecSort.java)
 And with this [video](https://www.youtube.com/watch?v=3yUSDJVDk4E). Shellsort is figured out
 
 ### Partition 
-Notice that partitioning is not stable. That is, each group is not in the same order it
-was originally. In fact, partitioning tends to reverse the order of some of the data in
-each group.
+Notice that partitioning is not stable. That is, each group is not in the same order it was originally. In fact, partitioning tends to reverse the order of some of the data in each group.
 
-Page 330
 
 Just blew right through the shellsort implementation and partition implementation
 
@@ -1048,6 +1045,39 @@ I want to walk through partition myself this time.
 
 *Walk through partition completely* Probably takes like 5 minutes.
 
+PS: this implementation doesn't check end of array exception if all elements are bigger than the pivot value so leftpointer will go from left to all the way right
+
+If it's equal key, there will be unnecessary swapping, but it's okay.
+
+Partition is O(N). Maximum N/2
+
+### Quicksort
+
+		public void recQuickSort(int left, int right)
+		{
+		if(right-left <= 0) // if size is 1,
+		return; // it’s already sorted
+		else // size is 2 or larger
+		{
+		// partition range
+		int partition = partitionIt(left, right);
+		recQuickSort(left, partition-1); // sort left side
+		recQuickSort(partition+1, right); // sort right side
+		}
+		}
+
+### Choosing a pivot value
+Pick the value on the most right and insert it in between left and right    
+And we will just swap it for faster run time    
+And then the pivot value won't move anymore
+
+[quicksort implementation](workable/quickSort1.java)
+
+The test for preventing the left to go out of the array is by:
+
+leftPtr < right
+
+Page 341
 
 ## Chapter tree
 
