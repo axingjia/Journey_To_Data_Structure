@@ -1032,7 +1032,7 @@ for insertion sort implemention: [Insertion Sort](workable/selecSort.java)
 And with this [video](https://www.youtube.com/watch?v=3yUSDJVDk4E). Shellsort is figured out
 
 ### Partition 
-Notice that partitioning is not stable. That is, each group is not in the same order it was originally. In fact, partitioning tends to reverse the order of some of the data in each group.
+Notice that partitioning is not stable. That is, each group is not in the same order itwas originally. In fact, partitioning tends to reverse the order of some of the data in each group.
 
 
 Just blew right through the shellsort implementation and partition implementation
@@ -1082,7 +1082,19 @@ Just went through the quickSort implementation. The key of swapping the an eleme
 Notice that leftptr starts from left-1, and rightptr starts from right, so rightptr starts from the pivot, so it starts out outside of the partition too. The reason why they start outside of the partition is because they will be incremented and decremented, respectively, before they’re used the first time
 
 Page 344
+### Degenerate to O(N^2) Performance 
+* Have two equal subarrays is the optimum situation for the quicksort algorithms
+* If you sort a inversely sorted array, it will run much more slowly and that many more dotted horizontal lines are generated, indicating more and larger subarrays are being partitioned.
+* If it has to sort one large and one small array, it's less efficient because the larger subarray has to be subdivided more times.
+* The worst situation results when a subarray with N elements is divided into one subarray with 1 element and the other with N-1 elements. If this 1 and N-1 division happens with every partition, then every element requires a separate partition step. This is in fact what takes place with inversely sorted data: In all the subarrays, the pivot is the smallest item, so every partition results in N-1 elements in one subarray and only the pivot in the other
+* There is another problem besides being slow. The number of recursive function calls also increase. If there are too many calls, the machine stack may overflow and paralyze the system
+* If the data is truly random, quicksort will be a good option
 
+### Median-of-Three Partitioning
+* To find the median of the first, last , and middle elements of the array
+* Finding the median of three items is obviously much faster than finding the median of all the items, and yet it successfully avoid picking the largest or smallest item in case where the data is already sorted or inversely sorted
+
+Page 347
 ## Chapter tree
 
 Digression here: I always want to make a file navigator in react, and file navigator requires tree I realize (than the normal dumb way of whatever I was using). Specifically a k-ary tree, and I need add function. (Actually thats basically it, just add function), well because its in react so its gonna be in javascript
