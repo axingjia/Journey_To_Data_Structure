@@ -1094,7 +1094,15 @@ Page 344
 * To find the median of the first, last , and middle elements of the array
 * Finding the median of three items is obviously much faster than finding the median of all the items, and yet it successfully avoid picking the largest or smallest item in case where the data is already sorted or inversely sorted
 
-Page 347
+### Radix Sort
+* divide into 10 groups, according to their 1s digit
+* sort by 0 to 9
+* divide by 10 groups again, but according to their 10s digit this time
+* instead of using an array of 10 arrays, used an array of 10 linked list
+* An outer loop looks at each digit of the keys in turn. There are two inner loops: The first takes the data from the array and puts it on the lists; the second copies it from the lists back to the array
+* To keep the sub-sort stable, you need th data to come out of each list in the same order it went in.
+* at first glance, it feels like a O(N)
+* but as as the key grows. The number of copies is proportional to the number of data items times the number of digits in the key. The number of digits is the log of the key values, so in most situations we're back to O(N*logN).
 ## Chapter tree
 
 Digression here: I always want to make a file navigator in react, and file navigator requires tree I realize (than the normal dumb way of whatever I was using). Specifically a k-ary tree, and I need add function. (Actually thats basically it, just add function), well because its in react so its gonna be in javascript
