@@ -1103,7 +1103,57 @@ Page 344
 * To keep the sub-sort stable, you need th data to come out of each list in the same order it went in.
 * at first glance, it feels like a O(N)
 * but as as the key grows. The number of copies is proportional to the number of data items times the number of digits in the key. The number of digits is the log of the key values, so in most situations we're back to O(N*logN).
-## Chapter tree
+
+## Chapter 8 Tree
+
+It combines the best of two other structures: an ordered array and a linked list. You can search a tree quickly, as you can an ordered array, and you can also insert and delete items quickly, as you can with a linked list.
+
+Insertion is slow in an ordered array    
+Searching is slow in a linked list    
+Tree has quick insertion and deletion like a linked list, and quick searching like an ordered array    
+Might be the most interesting data structure.
+
+* If every node in a tree can have at most two children, the tree is called a binary tree
+* binary search is: the left child will always be smaller than parent, and the right child bigger
+* MY: but child of child can be smaller or bigger???
+
+#### How do Binary Search Tree Work
+Operation:
+* find a node
+* insert a node 
+* traverse a tree 
+* delete a node
+
+When a tree is unbalanece, the tree efficiency can be seriously degraded.    
+How to deal with unbalance will be talked about more at Chapter 9
+
+		class Node
+		{
+		int iData; // data used as key value
+		double fData; // other data
+		node leftChild; // this node’s left child
+		node rightChild; // this node’s right child
+		public void displayNode()
+		{
+		// (see Listing 8.1 for method body)
+		}
+		} 
+		
+If its an object
+
+		class Node
+		{
+		person p1; // reference to person object
+		node leftChild; // this node’s left child
+		node rightChild; // this node’s right child
+		}
+		class person
+		{
+		int iData;
+		double fData;
+		}
+
+PAGE 375
 
 Digression here: I always want to make a file navigator in react, and file navigator requires tree I realize (than the normal dumb way of whatever I was using). Specifically a k-ary tree, and I need add function. (Actually thats basically it, just add function), well because its in react so its gonna be in javascript
 
