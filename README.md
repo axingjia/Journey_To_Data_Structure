@@ -1153,7 +1153,120 @@ If its an object
 		double fData;
 		}
 
-PAGE 375
+Tree class:
+
+		class Tree
+		{
+		private Node root; // the only data field in Tree
+		public void find(int key)
+		{
+		}
+		public void insert(int id, double dd)
+		{
+		}
+		public void delete(int id)
+		{
+		}
+		// various other methods
+		} // end class Tree
+
+A TreeApp: 
+
+		class TreeApp
+		{
+		public static void main(String[] args)
+		{
+		Tree theTree = new Tree; // make a tree
+		theTree.insert(50, 1.5); // insert 3 nodes
+		theTree.insert(25, 1.7);
+		theTree.insert(75, 1.9);
+		node found = theTree.find(25); // find node with key 25
+		if(found != null)
+		System.out.println(“Found the node with key 25”);
+		else
+		System.out.println(“Could not find node with key 25”);
+		} // end main()
+		} // end class TreeApp
+
+Find():
+
+		public Node find(int key) // find node with given key
+		{ // (assumes non-empty tree)
+			Node current = root; // start at root
+			while(current.iData != key) // while no match,
+			{
+				if(key < current.iData) // go left?
+				current = current.leftChild;
+				else
+				current = current.rightChild; // or go right?
+				if(current == null) // if no child,
+					return null; // didn’t find it
+			}
+		return current; // found it
+		}
+		
+		
+Code for insert:
+
+		public void insert(int id, double dd)
+		{
+		Node newNode = new Node(); // make new node
+		newNode.iData = id; // insert data
+		newNode.dData = dd;
+		if(root==null) // no node in root
+		root = newNode;
+		else // root occupied
+		{
+		Node current = root; // start at root
+		Node parent;
+		while(true) // (exits internally)
+		{
+		parent = current;
+		if(id < current.iData) // go left?
+		{
+		current = current.leftChild;
+		if(current == null) // if end of the line,
+		{ // insert on left
+		parent.leftChild = newNode;
+		return;
+		}
+		} // end if go left
+		else // or go right?
+		{
+			current = current.rightChild;
+		if(current == null) // if end of the line
+		{ // insert on right
+		parent.rightChild = newNode;
+		return;
+		}
+		} // end else go right
+		} // end while
+		} // end else not root
+		} // end insert()
+		// -------------------------------------------------------------
+
+#### Traverse the Tree
+* Preorder
+* Inorder 
+* Postorder
+
+#### Inorder Traversal
+* Inorder traversal(MY: not preorder!) will cause all the nodes to be visited in ascending order. If you want to create a sorted list of the data in a binary tree, this is one way to do it
+* It uses recursion. Basically: 1. Call itself to traverse the node's left subtree; 2. visit the node; 3. call itself to traverse the node's right subtree
+
+		private void inOrder(node localRoot)
+		{
+		if(localRoot != null)
+		{
+		inOrder(localRoot.leftChild);
+		System.out.print(localRoot.iData + “ “);
+		inOrder(localRoot.rightChild);
+		}
+		}
+
+#### Preorder and Postorder Traversal
+
+PAGE 385
 
 Digression here: I always want to make a file navigator in react, and file navigator requires tree I realize (than the normal dumb way of whatever I was using). Specifically a k-ary tree, and I need add function. (Actually thats basically it, just add function), well because its in react so its gonna be in javascript
 
