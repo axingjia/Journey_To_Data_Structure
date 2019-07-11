@@ -1374,8 +1374,36 @@ The second case isn't so bad either. The node has only two connections: to its p
 The trick is to replace the node with its inorder successor
 
 ###### Finding the successor
+* from human eye, it's easy, but for computer, we need an algorithm
+* First, the program goes to the original node's right child, which must have a key larger than the node. Then it goes to this right child's left child(if it has one), and to this left child's left child, and so on, following down the path of left child.
+* For the demo, you may want to make sure the successor has no children of its own.
 
-PAGE 395
+#### The code to find the sucessor:
+
+		// returns node with next-highest value after delNode
+		// goes to right child, then right child’s left descendants
+		private node getSuccessor(node delNode) {
+		Node successorParent = delNode;
+		Node successor = delNode;
+		Node current = delNode.rightChild; while(current != null)
+		{
+		successorParent = successor; successor = current;
+		current = current.leftChild; }
+		if(successor != delNode.rightChild) {
+		// go to right child // until no more
+		// left children,
+		// go to left child
+		// if successor not // right child,
+		// make connections
+		successorParent.leftChild = successor.rightChild; successor.rightChild = delNode.rightChild;
+		}
+		return successor; }
+
+delete a node in recursion in [mycodeschool](https://www.youtube.com/watch?v=gcULXE7ViZw)
+
+Inorder successor that I haven't [watched](https://www.youtube.com/watch?v=5cPbNCrdotA)
+
+PAGE 397
 
 Digression here: I always want to make a file navigator in react, and file navigator requires tree I realize (than the normal dumb way of whatever I was using). Specifically a k-ary tree, and I need add function. (Actually thats basically it, just add function), well because its in react so its gonna be in javascript
 
