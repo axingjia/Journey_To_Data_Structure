@@ -1265,8 +1265,117 @@ Code for insert:
 		}
 
 #### Preorder and Postorder Traversal
+* Preorder and postoder can be useful in writing program that parse or analyze algebraic expression
+* Preorder sequence: 1. visit the node, 2. call itself to traverse the node's left subtree; 3. call itself to traverse the node's right subtree
+* postorder sequence: 1. call itself to traverse the node's left subtree; 2. call itself to traverse the node's right subtree; 3. visit the node
+* compare to using stack, we store entire subtree in a binary tree
 
-PAGE 385
+Here are the steps when we encounter an operand:
+1. Make a tree with one node that holds the operand.
+2. Push this tree on the stack
+
+Here are the steps when we encounter an operator:
+1. pop two operand trees B and C off the stack
+2. Create a new tree A with the operator in its root
+3. Create B as the right child of A
+4. Attach C as the left child of A
+5. Push the resulting tree back on the stack
+
+Detail isn't shown
+
+##### Finding Maxium and Minimum Values
+
+		public Node minimum() // returns node with minimum key value
+		{
+		Node current, last;
+		current = root; // start at root
+		while(current != null) // until the bottom,
+		{
+		last = current; // remember node
+		current = current.leftChild; // go to left child
+		}
+		return last;
+		}
+		
+##### Deleting a Node
+* Deleting a node is the most complicated common operation required for binary search trees
+* You sart by finding the node you want to delete, using the same approach we saw in find() and insert(). When you've found the node, there are three cases to consider:
+1. The node to be deleted is a leaf(have no children)
+2. The node to be deleted has one children
+3. The node to be deleted has two children
+
+###### First Case: is a leaf
+
+		public boolean delete(int key) // delete node with given key
+		{ // (assumes non-empty list)
+		Node current = root;
+		Node parent = root;
+		boolean isLeftChild = true;
+		while(current.iData != key) // search for node
+		{
+		parent = current;
+		if(key < current.iData) // go left?
+		{
+		isLeftChild = true;
+		current = current.leftChild;
+		}
+		else // or go right?
+		{
+			isLeftChild = false;
+		current = current.rightChild;
+		}
+		if(current == null) // end of the line,
+		return false; // didn’t find it
+		} // end while
+		// found node to delete
+		// continues...
+		}
+		
+After we've found the node, we check first to verify that it has no children. When this is true, we check the special case of the root. If that's the node to be delted, we simply set it to null; this empties the tree. Otherwise, we set the parent's leftChild or rightChild field to null to disconnect the parent from the node.
+
+		// delete() continued...
+		// if no children, simply delete it
+		if(current.leftChild==null &&
+		current.rightChild==null)
+		{
+		if(current == root) // if root,
+		root = null; // tree is empty
+		else if(isLeftChild)
+		parent.leftChild = null; // disconnect
+		else // from parent
+		parent.rightChild = null;
+		}
+		// continues...
+
+##### Case 2: The Node to Be Deleted Has One Child
+The second case isn't so bad either. The node has only two connections: to its parent and to its only child. You want to "snip" the node out of this sequence by connecting its parent directly to its child
+
+		// delete() continued...
+		// if no right child, replace with left subtree
+		else if(current.rightChild==null)
+		if(current == root)
+		root = current.leftChild;
+		else if(isLeftChild) // left child of parent
+		parent.leftChild = current.leftChild;
+		else // right child of parent
+		parent.rightChild = current.leftChild;
+		// if no left child, replace with right subtree
+		else if(current.leftChild==null)
+		if(current == root)
+		root = current.rightChild;
+		else if(isLeftChild) // left child of parent
+		parent.leftChild = current.rightChild;
+		else // right child of parent
+		parent.rightChild = current.rightChild;
+		// continued...
+		
+		
+##### Delete Node with two Children
+The trick is to replace the node with its inorder successor
+
+###### Finding the successor
+
+PAGE 395
 
 Digression here: I always want to make a file navigator in react, and file navigator requires tree I realize (than the normal dumb way of whatever I was using). Specifically a k-ary tree, and I need add function. (Actually thats basically it, just add function), well because its in react so its gonna be in javascript
 
