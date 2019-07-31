@@ -1403,6 +1403,24 @@ delete a node in recursion in [mycodeschool](https://www.youtube.com/watch?v=gcU
 
 Inorder successor that I haven't [watched](https://www.youtube.com/watch?v=5cPbNCrdotA)
 
+MY: slowly realize this textbook is missing something. Gonna watch mycodeschool for binary tree now.
+
+[introduction to tree](https://www.youtube.com/watch?v=qH6yxkw0u78&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=25)
+* Depth of x=length of path from root to x or no. of edges in path from root to x
+* height of x=no. of edges in longest path from x to a leaf
+* height of leaf node is 0
+* height of the tree=height of the root node 
+
+[second vid](https://www.youtube.com/watch?v=H5JubkIy_p8&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=26)
+* strict/propert binary: each node can only have either 2 or 0 Children
+* complete binary tree: all level except possibly the last are completely filled and all nodes are as left as possible
+* perfect binary tree: all level are completely filled
+* maxium no. of nodes in a tree with heigh h=2^0+2^1+...2^h=2^(h+1)-1
+* balanced binary bree: difference between height of left and right subtree for every node is not more than k( mostly 1), aka if the difference is 2, it is not balanced
+* height of an empty tree=-1
+
+MY: okay 2 videos in that 30 minutes clocked in today
+
 PAGE 397
 
 Digression here: I always want to make a file navigator in react, and file navigator requires tree I realize (than the normal dumb way of whatever I was using). Specifically a k-ary tree, and I need add function. (Actually thats basically it, just add function), well because its in react so its gonna be in javascript
