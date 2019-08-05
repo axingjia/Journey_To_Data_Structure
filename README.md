@@ -1399,6 +1399,8 @@ The trick is to replace the node with its inorder successor
 		}
 		return successor; }
 
+PAGE 397
+
 delete a node in recursion in [mycodeschool](https://www.youtube.com/watch?v=gcULXE7ViZw)
 
 Inorder successor that I haven't [watched](https://www.youtube.com/watch?v=5cPbNCrdotA)
@@ -1421,7 +1423,16 @@ MY: slowly realize this textbook is missing something. Gonna watch mycodeschool 
 
 MY: okay 2 videos in that 30 minutes clocked in today
 
-PAGE 397
+
+
+third video: [Binary Search Tree](https://www.youtube.com/watch?v=pYT9F8_LFTM&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=27)
+* Just in-depth into BST 
+
+Fourth video: [implementation](https://www.youtube.com/watch?v=COZK7NATh4k&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=28)
+
+MY: okay, 30 mins in. Had horrible flashback on studying computer science right at 7am in the morning. Well lol.
+
+
 
 Digression here: I always want to make a file navigator in react, and file navigator requires tree I realize (than the normal dumb way of whatever I was using). Specifically a k-ary tree, and I need add function. (Actually thats basically it, just add function), well because its in react so its gonna be in javascript
 

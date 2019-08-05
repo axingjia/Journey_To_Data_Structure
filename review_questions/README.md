@@ -15,3 +15,5 @@
 7. Write a double linked list implementation
 
 8. Write array insert implementation
+
+9. write binary search tree's implementation, including, insert, remove, search
