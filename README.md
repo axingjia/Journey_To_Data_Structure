@@ -1432,7 +1432,93 @@ Fourth video: [implementation](https://www.youtube.com/watch?v=COZK7NATh4k&list=
 
 MY: okay, 30 mins in. Had horrible flashback on studying computer science right at 7am in the morning. Well lol.
 
+	void Insert(BstNode* root, int data){
+		if(root==NULL){
+			root=GetNewNode(data);
+			
+		}
+		else if (data<=root->data){
+			root->left=Insert(root->left,data)
+		}
+		else {
+			root->right=Insert(root->right,data)
+		}
+		return root;
+	}
 
+(tip): recursion is going to be used all the time in tree	
+
+Code for searching:
+
+	bool Search(BstNode* root, int data){
+		if(root==NULL) return false;
+		else if (root->data==data) return true;
+		else if(data<=root->data) return Search(root->left,data)
+		else return Search(root->right, data);
+	}
+
+This recursive implementation is definitely easier.
+
+MY: Why I had flashback last week? I was reading and learning and watching video right at 9am, and then felt horrible heartache. Maybe I am just not a morning person so never do complex thinking in the morning again. Wait until at least 10:30am.
+
+MY: Learning computer science is like you have to endure some boring stuff for a really low speed, and when you thought you know what is going on, all of the sudden you will be hit by some really complex idea with lots of details, and before you know it, the teacher has gone right through it, and its back to the boring stuff again, leaving you confused and mad.
+
+(BST implementation, memory allocation)[https://www.youtube.com/watch?v=hWokyBoo0aI&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=29]
+* a good explanation of stack and heap, better understanding of memory allocation now
+
+MY: 30 minutes in. from 11am to 12am.
+
+(find min and max in BST)[https://www.youtube.com/watch?v=Ut90klNN264&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=30]
+
+	int FindMind(BstNode* root){
+		if (root==NULL){
+			cout<<"Error: Tree is empty";
+			return -1;
+		}
+		while (root->left !=null){
+			root= root->left;
+		}
+		return root->data;
+	}
+	
+Recursive implementation:
+
+int FindMin(BstNode* root){
+	if(root==NULL){
+		cout<<"Error: Tree is empty";
+		return -1;
+	}
+	else if (root->left==NULL){
+		return root->data;
+	}
+	return FindMin(root->left);
+}
+
+(find height of a binary tree)[https://www.youtube.com/watch?v=_pnqMz5nrRs&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=31]
+* big O is O(n)
+
+	findHeight(root){
+		if(root is null){
+			return -1;
+		}
+		leftHeight<-FindHeight(root->left);
+		rightHeight<-FindHeight(root->right);
+		return max(leftHeight,rightHeight);
+	}
+(Binary Tree Traversal: breadth-first and depth-first)[https://www.youtube.com/watch?v=9RHO6jU--GU&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=32]
+* Breadth-first: Level order traversal
+* root-left-left: Preorder
+* left-root-right: inorder 
+* left-right-root: postorder
+* in order traversal of a binary search tree will give you a sorted list
+
+MY: have a flashback of being brain-tired and trying to focus on a lecture. Whole body is hot. Let's see how long I can last
+
+(level order traversal)[https://www.youtube.com/watch?v=86g8jAQug04&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=33]
+* How to traversal with level order?
+* use queue(FIFO)
+
+MY: 30 minutes in studying while tired, head hot. Let's end here
 
 Digression here: I always want to make a file navigator in react, and file navigator requires tree I realize (than the normal dumb way of whatever I was using). Specifically a k-ary tree, and I need add function. (Actually thats basically it, just add function), well because its in react so its gonna be in javascript
 
