@@ -1483,16 +1483,16 @@ MY: 30 minutes in. from 11am to 12am.
 	
 Recursive implementation:
 
-int FindMin(BstNode* root){
-	if(root==NULL){
-		cout<<"Error: Tree is empty";
-		return -1;
+	int FindMin(BstNode* root){
+		if(root==NULL){
+			cout<<"Error: Tree is empty";
+			return -1;
+		}
+		else if (root->left==NULL){
+			return root->data;
+		}
+		return FindMin(root->left);
 	}
-	else if (root->left==NULL){
-		return root->data;
-	}
-	return FindMin(root->left);
-}
 
 (find height of a binary tree)[https://www.youtube.com/watch?v=_pnqMz5nrRs&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=31]
 * big O is O(n)
@@ -1519,6 +1519,174 @@ MY: have a flashback of being brain-tired and trying to focus on a lecture. Whol
 * use queue(FIFO)
 
 MY: 30 minutes in studying while tired, head hot. Let's end here
+
+	void LevelOrder(Node* root){
+		if(root==NULL) return;
+		queue<Node*> Q;
+		Q.push(root);
+		while(!Q.empty()){
+			Node* current=Q.front();
+			cout<<current->data<<" ";
+			if(current->left !=NULL)Q.push(current->left);
+			if(current->right !=NULL) Q.push(current.right);
+			Q.pop();
+		}
+	}
+(preorder,inorder,postorder)[https://www.youtube.com/watch?v=gm8DUJJhmY4&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=34]
+
+	void Preorder(Node* root){
+		if(root==NULL) returnl;
+		printf("%c ",root->data);
+		Preorder(root->left);
+		Preorder(root->right);
+	}
+
+(check if a binary tree is binary search tree)[https://www.youtube.com/watch?v=yEwSGhSsT0U&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=35]
+* MY:it doesn't have to be balanced
+* The first implementation's big O is O(n^2)
+* The second is O(n);
+* there is a third implementaion. Do inorder traveral and it should be sorted
+
+	bool IsSubtreeLesser(Node* root,int data);
+	bool IsSubtreeGreater(Node* root,int data);
+	bool IsBinarySearchTree(Node* root){
+		if(root==NULL) return true;
+		if(IsSubtreeLesser(root->left,root->data)
+			&&IsSubtreeGreater(root->right,root->data)
+			&&IsBinarySearchTree(root->left)
+			&&IsBinarySearchTree(root->right)){
+				return true;
+			}else{
+				return false;
+			}
+	}
+
+	bool IsSubtreeLesser(Node* root, int value){
+		if(root==NULL) return true;
+		if(root->data<=value
+			&&IsSubtreeLesser(root->left,value)
+			&&IsSubtreeLessor(root->right,value)){
+				return true;
+			}else{
+				return false;
+			}
+	}
+	
+	bool IsSubtreeGreater(Node* root, int value){
+		if(root==NULL) return true;
+		if(root->data<=value
+			&&IsSubtreeGreater(root->left,value)
+			&&IsSubtreeGreater(root->right,value)){
+				return true;
+			}else{
+				return false;
+			}
+	}
+	
+	=====
+	
+	bool IsBstUtil(Node* root, int minValue, int maxValue){
+		if(root==NULL) return true;
+		if(root->data>minValue
+			&&root->data<maxValue
+			&&IsBstUtil(root->left,minValue,root->data)
+			&&IsBstUtil(root->right,minValue,root->data)){
+				return true;
+			}else{
+				return false;
+			}
+	}
+	
+	bool IsBinarySearchTree(Node* root){
+		return IsBstUtil(root,INT_MIN,INT_MAX);
+	}
+
+(delete a node from binary search tree)[https://www.youtube.com/watch?v=gcULXE7ViZw&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=36]
+* delete a node that has no child
+* delete a node that has 1 child
+* delete a node that has 2 child
+* find min in the right-subtree, copy the value in targetted node, delete duplicate from right-subtree
+
+
+	struct Node* Delete(struct Node* root, int data){
+		if(root==NULL)return root;
+		else if(data<root->data)root->left=Delete(root->left,data);
+		else if(data>root->data) root->right=Delete(root->right,data);
+		else{
+			if(root->left==NULL&&root->right==NULL){
+				delete root;
+				root=NULL;
+				
+			}else if(root->left==NULL){
+				struct Node* temp=root;
+				root=root->right;
+				delete temp;
+				
+			}else if(root->right==NULL){
+				struct Node* temp=root;
+				root=root->left;
+				delete temp;
+				
+			} else{
+				//2 children
+				struct Node* temp=FindMin(root->right);
+				root->data=temp->data;
+				root->right=Delete(root->right,temp->data);
+			}
+		}
+		return root;
+	}
+
+(inorder successor)[https://www.youtube.com/watch?v=5cPbNCrdotA&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=37]
+* insertion and deletion and search is O(h)=O(logn);
+* case 1:node has right subtree: go deep to leftmost node in the right subtree, or, find min in right subtree
+* case 2: no right subtree: go to the nearest ancestor for which given node would be in left subtree
+
+	struct Node* FindMin(struct Node* root){
+		if(root==NULL)return NULL;
+		while(root->left!=NULL){
+			root=root->left;
+			
+		}
+		return root;
+	}
+
+	struct Node* Getsuccessor(struct Node* root, int data){
+		//search the node - O(h)
+		struct Node* current=Find(root,data);
+		if(current==NULL) return NULL;
+		//case 1: node has right subtree 
+		if(current->right!=NULL){
+			<!-- struct Node* temp=current->right;
+			while(temp->left!=NULL)temp=temp->left;
+			return temp; -->
+			return FindMin(current->right);
+		}
+		//case 2:no right subtree
+		else{
+			struct Node* successor=NULL;
+			struct Node* ancestor=root;
+			while(ancestor!=current){
+				if(current->data<ancestor->data){
+					successor=ancestor; //so far this is the ddepest node for which current node is on the left 
+					ancestor=ancestor->left;
+				}else{
+					ancestor=ancestor->right;
+				}
+			}
+			return successor;
+		}
+	}
+	
+MY:{Okay, from 397 to 422. I have 2 days to do it
+
+Done.
+}
+
+###### Extra: Huffman code
+
+Done tree.
+
 
 Digression here: I always want to make a file navigator in react, and file navigator requires tree I realize (than the normal dumb way of whatever I was using). Specifically a k-ary tree, and I need add function. (Actually thats basically it, just add function), well because its in react so its gonna be in javascript
 
@@ -1561,3 +1729,18 @@ Digression here: I always want to make a file navigator in react, and file navig
 		tree._ root.children[2].children[0].parent = tree._ root.children[2];
 		
 So when click any item, the level of that level shows, all the children shows,
+
+# Chapter 9: Red Black Tree
+* Searching works the same way in a red-black tree as it does in an ordinary binary tree. On the other hand, insertion and deletion, while based on the algorithm in an ordinary tree, are extensively modified
+* there is top-down insertion and bottom-up insertion
+* In a red-black tree, balance is achieved during insertion( and also deletion). As an item is being inserted, the insertion routine checks that certain characteristics of the tree are not violated. If they are, it takes corrective action, restructuring the tree as necessary. By maintaining these characteristics, the tree is kept balanced.
+
+##### Red-Black Rules 
+1. Every node is either red or Black
+2. The root is always black 
+3. If a node is red, its children must be black(although the converse isn't necessarily true)
+4. Every path from the root to a leaf, or to a null child, must contain the same number of black nodes
+
+* In this book, duplicate key is assumed to be not allowed
+
+Page 437
