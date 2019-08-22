@@ -1742,5 +1742,27 @@ So when click any item, the level of that level shows, all the children shows,
 4. Every path from the root to a leaf, or to a null child, must contain the same number of black nodes
 
 * In this book, duplicate key is assumed to be not allowed
+* Note that color rules and node color changes are used only to help decide when to perform a rotation
+* if you are doing a right rotation, the top node has a left child. Similarly, if you are doing a left rotation, the top node must have a right child
 
-Page 437
+MY: now I am confused. The book says black node with two red children is a 
+
+SKIM and SKIP
+
+(geekforgeek explaination)[https://www.geeksforgeeks.org/red-black-tree-set-1-introduction-2/]
+* most of the self-balancing BST library functions like map and set in C++(Or TreeSet and TreeMap in Java) use Red Black Tree
+* Red black tree is a self-balancing binary search tree
+
+(MIT red black tree)[https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-046j-introduction-to-algorithms-sma-5503-fall-2005/video-lectures/lecture-10-red-black-trees-rotations-insertions-deletions/]
+
+(geekforgeek insertion)[https://www.geeksforgeeks.org/red-black-tree-set-2-insert/]
+
+(implementation)[https://www.geeksforgeeks.org/c-program-red-black-tree-insertion/]
+
+(deletion)[https://www.geeksforgeeks.org/red-black-tree-set-3-delete-2/]
+
+MY: so it's now a good time to define the scope of my learning. Purpose of learning data structure is to be able to do interview question, so red black tree is not included; however, this is fundamental knowledge
+
+MY: check Cracking the Coding Interview, red black tree is included. The rotation and color change don't make sense to me.
+
+page 463
