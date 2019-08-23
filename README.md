@@ -1784,3 +1784,12 @@ MY: 42 minutes into MIT course, finally understanding the rotation
 * Not going to do deletion. There are just too many cases
 
 MY: The book's red black tree's concept explaination and implementation is weird. I am not going to follow the book but it is a good curation.
+
+## 2-3-4 Trees and External Storage
+* 2-3-4 tree is multiway tree
+* 2-3-4 tree is balancing tree
+* they are less efficient than red-black trees but easier to program
+* it serves as an easy-to-understand introduction to B-trees
+* B0tree is another kind of multiway tree that's particularly useful for organizing data in external storage. (External means external to main memory; usually this is a disk drive)
+
+page 465
