@@ -1777,3 +1777,10 @@ MY: 42 minutes into MIT course, finally understanding the rotation
 
 * Spent 2 hour to figure out the tree rotation algorithm. It's basically finding out what links are broken and what links are rebuilt to figure out the most efficient way to do this in 2 different cases
 * another half an hour, figure out the whole red-black tree insertion algorithm
+* done MIT red black tree lecture
+
+(deletion)[https://www.youtube.com/watch?v=CTvfzU_uNKE]
+
+* Not going to do deletion. There are just too many cases
+
+MY: The book's red black tree's concept explaination and implementation is weird. I am not going to follow the book but it is a good curation.

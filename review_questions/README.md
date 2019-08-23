@@ -21,3 +21,5 @@
 10. Figure out tree rotation algorithm by yourself without reading the code 
 
 11. figure out red-black tree algorithm
+
+12. insert a list of nodes into a red-black tree structure.
