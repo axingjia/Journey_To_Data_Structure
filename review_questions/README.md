@@ -17,3 +17,7 @@
 8. Write array insert implementation
 
 9. write binary search tree's implementation, including, insert, remove, search
+
+10. Figure out tree rotation algorithm by yourself without reading the code 
+
+11. figure out red-black tree algorithm

@@ -1766,3 +1766,14 @@ MY: so it's now a good time to define the scope of my learning. Purpose of learn
 MY: check Cracking the Coding Interview, red black tree is included. The rotation and color change don't make sense to me.
 
 page 463
+
+* key: the rotation maintain the binary search tree property. MY: That's why this is how it is rotated
+
+MY: 42 minutes into MIT course, finally understanding the rotation
+
+* insertion sometimes need 1. a recoloring->2. rotate right(To make it straighter from the root node)->3. rotate left
+* always 2 rotation will suffice
+* there are 6 cases
+
+* Spent 2 hour to figure out the tree rotation algorithm. It's basically finding out what links are broken and what links are rebuilt to figure out the most efficient way to do this in 2 different cases
+* another half an hour, figure out the whole red-black tree insertion algorithm
