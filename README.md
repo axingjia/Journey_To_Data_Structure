@@ -1791,5 +1791,26 @@ MY: The book's red black tree's concept explaination and implementation is weird
 * they are less efficient than red-black trees but easier to program
 * it serves as an easy-to-understand introduction to B-trees
 * B0tree is another kind of multiway tree that's particularly useful for organizing data in external storage. (External means external to main memory; usually this is a disk drive)
+* node splitting can be thought as turning a 4-node into 2 2-nodes 
 
-page 465
+MY: Study from 8 to 1am. Today is a good day. 2 hours for rotation,
+
+
+(video)[https://www.youtube.com/watch?v=47u7RU0XNR0]
+
+MY: just by reading a book to understand a technical concept is not easy. The book is good for curation, but to understand a concept quickly from a big picture, video is the best.
+
+(intro to 2-3-4 tree)[https://www.youtube.com/watch?v=47u7RU0XNR0&t=156s]
+
+(insertion of 2-3-4 tree)[https://www.youtube.com/watch?v=uIWLCfT9daI]
+
+(deletion of 2-3-4 tree)[https://www.youtube.com/watch?v=M_z-qYOY5JQ]
+
+MY: deletion is too detailed. Time to look back to the book or look into google search.
+
+MY: So now I have a routine for learning.
+
+MY: comes to paragraph about splitting, I would not understand by just reading
+
+page 475: 10 pages in. thats pretty good
+
