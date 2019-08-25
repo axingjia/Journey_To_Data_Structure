@@ -1792,6 +1792,7 @@ MY: The book's red black tree's concept explaination and implementation is weird
 * it serves as an easy-to-understand introduction to B-trees
 * B0tree is another kind of multiway tree that's particularly useful for organizing data in external storage. (External means external to main memory; usually this is a disk drive)
 * node splitting can be thought as turning a 4-node into 2 2-nodes 
+* deletion implementation is ignored
 
 MY: Study from 8 to 1am. Today is a good day. 2 hours for rotation,
 
@@ -1812,5 +1813,52 @@ MY: So now I have a routine for learning.
 
 MY: comes to paragraph about splitting, I would not understand by just reading
 
-page 475: 10 pages in. thats pretty good
+MY: Okay, now toward the code
+* 2-3-4 tree is ignored in Cracking the Coding Interview so I am gonna skip it too 
 
+SKIP implementation     
+SKIP comparison between red-black tree    
+SKIP 2-3 tree
+
+B-tree is hard to understand with reading. Going for video.
+
+(b-tree)[https://www.youtube.com/watch?v=aZjYr87r1b8]
+* talk about indexing. This is very good to know about 
+* this teacher is really good too
+
+MY: Why am I learning B-tree and external storage when I will never use it. My purpose is to go through technical interview. But it's interesting to know, so I will just watch through the video
+
+Rule of B-tree
+* A node split divides the data items equally: half go to the newly created node, and half remain in the old one 
+* Node splites are performed from the bottom up; as in 2-3 tree, rather than from the top down.
+* Again, as in a 2-3 tree, it's not the middle item in a node that's promoted upward, but the middle item in the sequence formed form the items in the node plus the new item.
+
+page 519
+
+CL: If you want to sort a list that some item is in order, mergesort would be the best
+
+## Hash Table
+* A hash table is a data structure that offers very fast insertion and searching. Insertion and searching (and sometimes deletion) can take close to constant time: O(1)
+* example using hashtable: spell checker
+* hash table is significantly faster than trees, which is O(logN)
+* Not only are they fast, hash tables are relatively easy to program
+* Hast tables do have several disadvantages. They are based on arrays, and arrays are difficult to expand after they've been created. For some kinds of hash tables, performance may degrate catastrophically when a table becomes too full.
+* there is no convenient way to visit the items in a hash talbe in any kind of order (such as from smallest to largest). If you need this capability, you'll need to look elsewhere 
+* However, if you don't need to visit items in order, and you can predict in advance the size of your database, hash tables are unparalleled in spped and convenience.
+
+#### Just use the index
+* example: employee records
+* The speed and simplicity of data access using this array-based database make it very attractive. However our example works only because the keys are unusually well organized.
+* it works because: 1. 1 to a known maximum; 2. the maximum is a reasonable size for an array; 3. There are not deletion, so memory-wasting gaps don't develop in the sequence; 4. New items can be added sequentially at the ned of the array; 5. The array doesn't need to be very much larger than the current number of items
+
+* Sometimes the keys are not so well behaved. The classic example is a dictionary. For dictionary, a hash table is a good choice
+* A similar widely used appilcation for hash tables is in computer-language compilers, which maintain a symbol table in a hash table. The symbol table holds all the variable and function names made up by the programmer, along with the address where they can be found in memory. The program needs to access these names very quickly, so a hash table is the preferred data structure.
+
+### Converting words to numbers
+* adding the digits
+* Assuming it's just 10 characters word. the Maximum number would be 260(26*10) There are 50,000 words in a dictionary, so each array element will need to hold about 192 words(50,000 divided by 260)
+* If we still use index to array, it would seriously degrade the access speed. Accessing the array would be quick, but searching therough the 192 words to find the one we wanted would be slow
+
+### Multiplying by powers
+
+page 523
