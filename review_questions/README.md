@@ -23,3 +23,5 @@
 11. figure out red-black tree algorithm
 
 12. insert a list of nodes into a red-black tree structure.
+
+13. Write hash table implementation

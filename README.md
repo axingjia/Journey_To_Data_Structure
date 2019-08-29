@@ -1860,5 +1860,26 @@ CL: If you want to sort a list that some item is in order, mergesort would be th
 * If we still use index to array, it would seriously degrade the access speed. Accessing the array would be quick, but searching therough the 192 words to find the one we wanted would be slow
 
 ### Multiplying by powers
+READ
 
-page 523
+#### Collision
+* open addressing: when a collision occurs, search the array in some systematic way for an empty cell and insert the new item there, instead of the index specified by the hash function
+* separate chaining: when a collision occurs, the new item is simply inserted int eh list at that index
+
+#### Open addressing
+* linear probing: search the next index (this is called linear probing because it steps sequentially along the line of cells)
+* in a general-purpose hash table, the array size should be a prime number
+* filled sequence: a sequence of filled cells in a hash table
+* clustering: as you add more and more item, the filled sequence become longer
+* it's extremely inefficient at filling an almost-full array
+* probe length: the number of steps they take to find an empty cell
+* deletion: deletion isn't accomplished by simply removing a data item from a cell, leaving it empty. Why not? If a cell is made empty in the middle of this sequence of full cells, the find routine will give up when it sees the empty cell, even if the desired cell can eventually be reached. It can be -1, or \*Del\*.
+* the insert button will insert a new item at the first available empty cell or in a \*del\* item. The find button will treat a \*Del\* as an existing item for the purpose of searching for another item further along
+* If there are many deletions, the hash table fills up with these ersatz \*del\* data item which makes it less efficient. For this reason many hash table implementation do not allow deletion. If it is implemented, it should be used sparingly.
+* duplicate shouldn't usually be allowed in hashtable. MY: like a dictionary in PHP
+
+#### The code 
+* The book doesn't check if its full
+
+
+page 540
