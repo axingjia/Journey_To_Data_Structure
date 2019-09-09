@@ -1881,5 +1881,84 @@ READ
 #### The code 
 * The book doesn't check if its full
 
+* expanding the array can be called as rehashing, the position of the elements will be changed. You can't simply copy the items from one array to the other. You will need to go through the old array in sequence, cell by cell, inserting each item you find into the new array with the insert() method. This is a time-consuming process, but necessary if the array is to be expanded.
+* The expanded array is usually made twice the size of the original array. Actually, because the array size should be a prime number, the new array will need to be a bit more than twice as big. Calculating the enw array size is part of the rehashing process.
 
-page 540
+### Quadratic Probing
+* The larger the cluster, the faster it grows
+* The ratio of the number of items in a table to the table's size is called the load factor. A table with 10,000 cells and 6,667 items has a load factor of 2/3.
+* loadFactor =nItems/arraySize
+* clusters can form even when the load factor isn't high. Parts of the hash table may consist of big clusters, while others are sparsely ibhabited. Clusters reduce performance
+* Quadratic probing is an attempt to keep cluster from forming. The idea is to probe more widely separately cells, instead of those adjacent to the primary hash site.
+* **The Step is the Square of the Step Number**. In a linear probe, if the primary hash index is x, subsequent probes go to x+1, x+2, x+3, and so on. Inquadratic probing, probes go to x+1, x+4, x+9, x+16, x+25 and so go. It is equal to x+1^2, x+2^2, and so on.
+* **Tip**: Always make the array size a prime number: otherwise an endless sequence of steps may occur during a probe
+* **Problem with Quadratic Probes**: Quadratic probes eliminate the clustering problem we saw with the linear probe, which is called primary clustering. However, quadratic probes suffer from a different and more subtle clustering problem. This occurs because all the keys that hash to a particular cell follow the same sequence in trying to find a vacant space.
+* For example, 184,302,420 and 544 all has to 7. The 302 require a one step-probe, 420 require a four-step probe, and 544 will require a nine-step probe. Each addtional item with a key that hashed to 7 will required a longer probe. This is called *secondary clustering*.
+* Secondary clustering is not a serious problem, but quadratic probing is not often used because there's a slightly better solution.
+
+#### Double Hashing
+* To eliminate primary and secondary clustering, we can use double hashing.
+* What we need is a way to generate probe sequence that depend on the key instead of being the same for every key. Then numbers with different keys that hash to the same index will use different probe sequences.
+* The solution is to hash the key a second time, using a different hash function, and use the result as the step size. 
+* Experience has shown that the secondary hash function must have the following characteristics: Must not be the same as the primary hash function, 2. It must never output a 0(otherwise, there would be no step, every probe would land on the same cell, and the algorithm would go into an endless loop)
+* Expert discovers that the following function form work well: stepSize=constant -(key%constant). **where constant is prime and smaller than the array size**, such as stepSize=5-(key%5)
+* when the table size is a prime number, the probe sequence will eventually visit every cell.
+
+### Separate Chaining
+* A different approach is to install a linked list at each index in the hash table
+* if the list of each cell is M, the average number of items on the list. The time complexity is O(M) time
+* Bucket: another approach similar to separate chaining is to use an array at each location in the hash table, instead of a linked list. Such arrays are sometimes called buckets
+* sometimes it may be worthwhile to use the slightly more complicated sorted list, rather than an unsorted list. However, an unsorted list is prefered if insertion speed is more important
+
+#### Hash Function
+* A good hash function is simple, so it can be computed quickly.
+* A hash function with many multiplications and divisions is not a good idea. (However, the bit-manipulation facilities of Java or C++, such as shifting bits right to divide a number by a multiple of 2, can sometimes be used to good advantage)
+
+#### Hash String 
+		public static int hashFunc1(String key)
+		{
+		int hashVal = 0;
+		int pow27 = 1; // 1, 27, 27*27, etc
+		for(int j=key.length()-1; j>=0; j--) // right to left
+		{
+		int letter = key.charAt(j) - 96; // get char code
+		hashVal += pow27 * letter; // times power of 27
+		pow27 * = 27; // next power of 27
+		}
+		return hashVal % arraySize;
+		} // end hashFunc1()
+
+* what we saw earlier: key = 3*273 + 1*272 + 20*271 + 19*270
+* this hash function is not as efficient as it might be. Aside from the character conversion, there are two multiplications and an addition inside the loop.
+* We can eliminate a multiplication by taking advantage of a mathematical identity called Horner's method.
+* var4*n4 + var3*n3 + var2*n2 + var1*n1 + var0*n0 can be written as (((var4*n + var3)* n + var2)* n + var1)* n + var0
+
+		public static int hashFunc2(String key)
+		{
+		int hashVal = key.charAt(0) - 96;
+		for(int j=1; j<key.length(); j++) // left to right
+		{
+		int letter = key.charAt(j) - 96; // get char code
+		hashVal = hashVal * 27 + letter; // multiply and add
+		}
+		return hashVal % arraySize; // mod
+		} // end hashFunc2()
+		
+* The hashFunc2() method unfortunately can't handle string longer than about seven letters. Longer strings cause the value of hashVal to exceed the size of type int
+* It is not the final index that's too big; it's the intermediate key values
+* It turns out that with Horner's formulation we can apply the modulo operator at each step in teh calculation
+
+		public static int hashFunc3(String key)
+		{
+		int hashVal = 0;
+		for(int j=0; j<key.length(); j++) // left to right
+		{
+		int letter = key.charAt(j) - 96; // get char code
+		hashVal = (hashVal * 27 + letter) % arraySize; // mod
+		}
+		return hashVal; // no mod
+		} // end hashFunc3()
+		
+* This approach or something like it is normally taken to hash a string.  Various bitmanipulation tricks can be played as well, such as using a base of 32 (or a larger power of 2) instead of 27, so that multiplication can be effected using the shift operator (>>), which is faster than the modulo operator (%).
+
+page 566
