@@ -1961,4 +1961,28 @@ READ
 		
 * This approach or something like it is normally taken to hash a string.  Various bitmanipulation tricks can be played as well, such as using a base of 32 (or a larger power of 2) instead of 27, so that multiplication can be effected using the shift operator (>>), which is faster than the modulo operator (%).
 
-page 566
+#### Folding
+* It is breaking the key into groups of digits and adding the group. For example, if it's a nine-digit number, break it into 123+456+789=1368. You then can module the number so the highest index is 999. In this case, 1368%1000=368.
+* If the array size is 100, you would need to break the nine-digit key into four two-digit numbers and one one-digit number:12+34+56+78+9=189 and 189%100=89.
+* Remember to use prime number as array size.
+
+#### Hashing Efficiency
+* Insertion and search can approach O(1)
+* If collision occur, access times become dependent on the resulting probe lengths. Thus, an individual search or insertion time is proportional to the length of the probe. 
+* The average probe length (and therefore the average access time) is dependent on the load factor (the ratio of items in the table to the size of the table). As the load factor increases, probe length grow longer.
+* If P is the probe length and L is the load factor, a linear probe is P=(1+1/(1-L)^2)/2. For an unsuccessful search it's P=(1+1/(1-L))/2. These formulas are from Knuth(There are further reading in the book)
+* At a load factor of 1/2, a successful search takes 1.5 comparisons and an unsuccessful search takes 2.5. At a load factor of2/3, the number are 2.0 and 5.0. At higher load factors the number become very large 
+* The moral is that the load factor must be kept under 2/3 and preferably under 1/2. On the other hand, the lower the load factor, the more memory is needed for a given amount of data. The optimum load factor is a particular situation depends on the trade-off between memory efficiency, which decreases with lower load factors, and speed, which increases.
+* For *quadratic probing and double hashing*: a successful search is log(1-loadFactor)/loadFactor, an unsuccessful search is 1/(1-loadFactor). At a load factor of 0.5, successful and unsuccessful searches both require an average of two probes. At a 2/3 load factor, the numbers are 2.37 and 3.0 and at 0.8 they're 2.90 and 5.0. Thus, somewhat higher load factors can be tolerate for quadratic probing and double hashing than for linear probing.
+* For *separate chaining*, assuming N is the data items, on the average, each list will hold N divided by arraySize: AverageListLength=N/arraySize. This is the same as the definition of the load factor: load Factor N/array. So the average list length equals the load factor. For separate chaining's searching, on the average, half the items must be examined before the correct one is located. Thus the search time is 1+loadFactor/2. This is true whether the list are ordered or not. In an unsuccessful search, if the lists are unordered, all the item must be search, so the time is 1+loadFactor
+* In separate chaining, it's typical to use a load factor of about 1.0. Smaller load factors don't improve performance significantly, but the time for all operations increases linearly with load factor, so going beyond 2 or so is generally a bad idea.
+* *open addressing versus separate chaining*: if open addressing is to be used, double hashing is more advantageous than quadratic probing. The exception is the situation in which plenty of memory is available and the data won't expand after the table is created; in this case linear probing is somewhat simpler to implement and, if load factors below 0.5 are used, cause little performance penalty.
+* If the number of items that will be inserted in a hash table isn't known when the table is created, separate chaining is preferable to open addressing. Increasing the load factor causes major performance penalties in open addressing, but performance degrades only linearly in separate chaining.
+
+####Hash Table and External Storage 
+SKIM
+
+# Heap
+
+Page 579 
+
