@@ -1984,5 +1984,91 @@ SKIM
 
 # Heap
 
-Page 579 
+In this chapter we'll describe another structure that can be used to implement a priority queue: the heap. A heap is a kind of tree. It offers both insertion and deletion in O(logN) time. Thus, it's not quite as fast for deletion, but much faster for insertion. It's the method of choice for implementing priority queues where speed is important and there will be many insertion.
+
+Note: Don't confuse the term heap here with the heap which means the portion of computer memory available to a programmer with new in languages like Java and C++.
+
+A heap is a binary tree with these characteristics:
+* It is cimplete. This means it's completely filled in, reading from left to right across each row, although the last row need not be full.
+* It's (usually) implemented as an array.
+* Each node in a heap satisfies the heap condition, which states that every node's key is larger than (or equal to) the keys of its children.
+
+### Priority Queue and Heap
+
+	class Heap
+	{
+	private Node heapArray[];
+	public void insert(Node nd)
+	{ }
+	public Node remove()
+	{ }
+	}
+
+	class priorityQueue
+	{
+	private Heap theHeap;
+	public void insert(Node nd)
+	{ theHeap.insert(nd); }
+	public Node remove()
+	( return theHeap.remove() }
+	}
+	
+The methods for the priorityQueue class are simply wrapped around the methods for the underlying Heap class; they have the same functionality. (This shows a priority queue is an ADT that can be implemented in a variety of ways, while a heap a more fundamental kind of data stucture)
+
+In a heap, traversing the nodes in order is difficult because the organizing principle (the heap condition) is not as strong as the organizing principle in a tree. The nodes to the left or the right of a given node, or on higher or lower levels-provided they're not on the same path-can have keys larger or smaller than the node's key.
+
+Because heaps are weakly order, some operations are difficult or impossible. Besides its failure to support traversal, a heap also does not allow convenient searching for a specified key. Also, a specified key can not be deleted.
+
+Thus, the organization of a heap may seem dangerously close to randomness. Nevertheless, the ordering is just sufficient to allow fast removal of the maximum node and fast inseriton of new nodes.
+
+#### Removal 
+* means removal of the maximum key.
+* Here are the steps: remove the root; move the last node into the root; trickle the last node down until it's below a larger node and above a smaller one.
+* To trickle ( the terms bubble or percolate are also used) a node up or down means to move it along a path step by step, swapping it with the node ahead of it, checking at each step to see whether it's in its proper position.
+* When its a max heap, swap with larger node to maintain the property of the heap.
+
+		maxNode=heapArray[0];
+		heapArray[0]=heapArray[N-1]
+		N--;
+
+		
+#### Insertion
+* Inserting a node is also easy. Inseriton uses trickle up, rather than trickle down. Initially, the node to be inserted is placed in the first open position at the end of the array, increasing the array size by one:
+
+	heapArray[N]=newNode;
+	N++; 
+	
+* The trickle-up algorithm is somewhat simpler than trickling down because two children don't need to be compared.
+* You can see that if you remove a node and then insert the same node the result is not necessarily the restoration of the original heap.
+
+#### Code 
+* For a node at index x in the array. Its parrent is (x-1)/2; its left child is 2*x+1; its right child is 2*x+2 
+
+##### Insertion 
+		public boolean insert(int key)
+		{
+		if(currentSize==maxSize) // if array is full,
+		return false; // failure
+		Node newNode = new Node(key); // make a new node
+		heapArray[currentSize] = newNode; // put it at the end
+		trickleUp(currentSize++); // trickle it up
+		return true; // success
+		} // end insert()
+		
+		public void trickleUp(int index)
+		{
+		int parent = (index-1) / 2;
+		Node bottom = heapArray[index];
+		while( index > 0 &&
+		heapArray[parent].getKey() < bottom.getKey() )
+		{
+		heapArray[index] = heapArray[parent]; // move node down
+		index = parent; // move index up
+		parent = (parent-1) / 2; // parent <- its parent
+		} // end while
+		heapArray[index] = bottom;
+		} // end trickleUp()
+
+
+Page 590
 
