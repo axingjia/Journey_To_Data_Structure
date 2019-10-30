@@ -2070,5 +2070,74 @@ Thus, the organization of a heap may seem dangerously close to randomness. Never
 		} // end trickleUp()
 
 
-Page 590
+#### Removal 
+
+		public Node remove() // delete item with max key
+		{ // (assumes non-empty list)
+		Node root = heapArray[0]; // save the root
+		heapArray[0] = heapArray[--currentSize]; // root <- last
+		trickleDown(0); // trickle down the root
+		return root; // return removed node
+		} // end remove()
+		
+The trickledown() routine is more complicated than trickleup() because we must determine which of the two children is larger.
+
+		public void trickleDown(int index)
+		{
+		int largerChild;
+		Node top = heapArray[index]; // save root
+		while(index < currentSize/2) // while node has at
+		{ // least one child,
+		int leftChild = 2*index+1;
+		int rightChild = leftChild+1;
+		// find larger child
+		if( rightChild < currentSize && // (rightChild exists?)
+		heapArray[leftChild].getKey() <
+		heapArray[rightChild].getKey() )
+		largerChild = rightChild;
+		else
+		largerChild = leftChild;
+		// top >= largerChild?
+		if(top.getKey() >= heapArray[largerChild].getKey())
+		break;
+		// shift child up
+		heapArray[index] = heapArray[largerChild];
+		index = largerChild; // go down
+		} // end while
+		heapArray[index] = top; // index <- root
+		} // end trickleDown()
+
+#### Key Change 
+		public boolean change(int index, int newValue)
+		{
+		if(index<0 || index>=currentSize)
+		return false;
+		int oldValue = heapArray[index].getKey(); // remember old
+		heapArray[index].setKey(newValue); // change to new
+		if(oldValue < newValue) // if raised,
+		trickleUp(index); // trickle it up
+		else // if lowered,
+		trickleDown(index); // trickle it down
+		return true;
+		} // end change()
+
+* Efficiency: O(logN)
+
+#### A Tree-based Heap 
+* it is possible to have it in a tree structure 
+* one problem is finding the last node. However, the location is not hard to find in a complete tree if you keep track of the number of nodes in the tree. For example, if there are 29 nodes, convert it to binary is 11101, remove the initial 1, leaving 1101. This is the path from the root to node 29: right right left right.
+
+#### Heapsort 
+The basic idea is to insert all the unordered item into a heap, then remove the item in sorted order:
+
+		for(j=0; j<size; j++)
+		theHeap.insert( anArray[j] ); // from unsorted array
+		for(j=0; j<size; j++)
+		anArray[j] = theHeap.remove(); // to sorted array
+
+Because insert and remove operate in O(logN), each must be applied N times, the entire sort requires O(NlogN)
+
+# Graph
+
+Page 615
 
