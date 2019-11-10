@@ -2193,5 +2193,39 @@ MY: Not getting the implementation. Need help
 
 (https://www.youtube.com/watch?v=9C2cpQZVRBA&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=41)[adjacency matrix]
 
-Page 623
+#### Depth-First Search
 
+		// returns an unvisited vertex adjacent to v
+		public int getAdjUnvisitedVertex(int v)
+		{
+		for(int j=0; j<nVerts; j++)
+		if(adjMat[v][j]==1 && vertexList[j].wasVisited==false)
+		return j; // return first such vertex
+		return -1; // no such vertices
+		} // end getAdjUnvisitedVertex()
+		
+		
+		public void dfs() // depth-first search
+		{ // begin at vertex 0
+		vertexList[0].wasVisited = true; // mark it
+		displayVertex(0); // display it
+		theStack.push(0); // push it
+		while( !theStack.isEmpty() ) // until stack empty,
+		{
+		// get an unvisited vertex adjacent to stack top
+		int v = getAdjUnvisitedVertex( theStack.peek() );
+		if(v == -1) // if no such vertex,
+		theStack.pop(); // pop a new one
+		else // if it exists,
+		{
+		vertexList[v].wasVisited = true; // mark it
+		displayVertex(v); // display it
+		theStack.push(v); // push it
+		}
+		} // end while
+		// stack is empty, so we’re done
+		for(int j=0; j<nVerts; j++) // reset flags
+		vertexList[j].wasVisited = false;
+		} // end dfs
+
+Page 631
