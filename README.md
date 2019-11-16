@@ -2370,4 +2370,11 @@ The idea of the topological sorting is unusual but simple. Two steps are necessa
 		
 MY: Don't quite get topological sort.
 
-Page 657
+Other site uses recursive (https://www.youtube.com/watch?v=ddTC4Zovtbc)[method]
+
+#### Warshall's Algorithm
+* In some applications it's important to find out quickly whether one vertex is reachable from another vertex. Perhaps you want to fly from Athen to Murmansk on Hubris Airlines and you don't care how many intermediate stops you need to take. Is this trip possible 
+* It is O(N)
+* It's possible to construct a table that tell you instantly (that is, O(1) time) whether one vertex is reachable from another. Such a table can be obtained by systematically modifying a graph's adjacency matrix. This table is called transitive closure of the original graph
+
+page 663
