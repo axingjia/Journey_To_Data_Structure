@@ -2194,14 +2194,16 @@ MY: Not getting the implementation. Need help
 (https://www.youtube.com/watch?v=9C2cpQZVRBA&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=41)[adjacency matrix]
 
 #### Depth-First Search
+* rule 1: if possible, visit an adjacent unvisited vertex, mark it, and push it on the stack
+* If you can't follow Rule 1, then, if possible, pop a vertex off the stack.
 
 		// returns an unvisited vertex adjacent to v
 		public int getAdjUnvisitedVertex(int v)
 		{
-		for(int j=0; j<nVerts; j++)
-		if(adjMat[v][j]==1 && vertexList[j].wasVisited==false)
-		return j; // return first such vertex
-		return -1; // no such vertices
+			for(int j=0; j<nVerts; j++)
+				if(adjMat[v][j]==1 && vertexList[j].wasVisited==false)
+					return j; // return first such vertex
+			return -1; // no such vertices
 		} // end getAdjUnvisitedVertex()
 		
 		
@@ -2212,20 +2214,160 @@ MY: Not getting the implementation. Need help
 		theStack.push(0); // push it
 		while( !theStack.isEmpty() ) // until stack empty,
 		{
-		// get an unvisited vertex adjacent to stack top
-		int v = getAdjUnvisitedVertex( theStack.peek() );
-		if(v == -1) // if no such vertex,
-		theStack.pop(); // pop a new one
-		else // if it exists,
-		{
-		vertexList[v].wasVisited = true; // mark it
-		displayVertex(v); // display it
-		theStack.push(v); // push it
-		}
+			// get an unvisited vertex adjacent to stack top
+			int v = getAdjUnvisitedVertex( theStack.peek() );
+			if(v == -1) // if no such vertex,
+			theStack.pop(); // pop a new one
+			else // if it exists,
+			{
+				vertexList[v].wasVisited = true; // mark it
+				displayVertex(v); // display it
+				theStack.push(v); // push it
+			}
 		} // end while
 		// stack is empty, so we’re done
 		for(int j=0; j<nVerts; j++) // reset flags
-		vertexList[j].wasVisited = false;
+			vertexList[j].wasVisited = false;
 		} // end dfs
+		
+		Graph theGraph = new Graph();
+		theGraph.addVertex(‘A’); // 0 (start for dfs)
+		theGraph.addVertex(‘B’); // 1
+		theGraph.addVertex(‘C’); // 2
+		theGraph.addVertex(‘D’); // 3
+		theGraph.addVertex(‘E’); // 4
+		theGraph.addEdge(0, 1); // AB
+		theGraph.addEdge(1, 2); // BC
+		theGraph.addEdge(0, 3); // AD
+		theGraph.addEdge(3, 4); // DE
+		System.out.print(“Visits: “);
+		theGraph.dfs(); // depth-first search
+		System.out.println();
 
-Page 631
+
+#### Breath-First Search 
+* Rule 1: visit the next univsited vertex (if there is one) that's adjacent to the current vertex, mark it, and insert it into the queue.
+* If you can't carry out Rule 1 because there are no more unvisited vertices, remove a vertex from the queue (if possible) and make it the current vertex
+* If you can't carry out Rule 2 because the queue is empty, you're done
+
+		public void bfs() // breadth-first search
+		{ // begin at vertex 0
+		vertexList[0].wasVisited = true; // mark it
+		displayVertex(0); // display it
+		theQueue.insert(0); // insert at tail
+		int v2;
+		while( !theQueue.isEmpty() ) // until queue empty,
+		{
+		int v1 = theQueue.remove(); // remove vertex at head
+		// until it has no unvisited neighbors
+		while( (v2=getAdjUnvisitedVertex(v1)) != -1 )
+		{ // get one,
+		vertexList[v2].wasVisited = true; // mark it
+		displayVertex(v2); // display it
+		theQueue.insert(v2); // insert it
+		} // end while(unvisited neighbors)
+		} // end while(queue not empty)
+		// queue is empty, so we’re done
+		for(int j=0; j<nVerts; j++) // reset flags
+		vertexList[j].wasVisited = false;
+		} // end bfs()
+		
+BFS is useful if you are trying to find the shortest path from the starting vertex to a given vertex. When you find the specified vertex, you know the path you've trace so far is the shortest path to the node. If there were a shorter path, the BFS would have found it already.
+
+#### Minimum Spanning Tree
+* A minimum spanning tree means the same vertices with the minimum number of edges necessary to connect them
+* The arithmetically inclined will note that the number of edges E in a minimum spanning tree is always one less than the number of vertices V: E=V-1
+* Remember that we're not worried here about the length of the edges. We're not trying to find a minimum physical length, just the minimum number of edges. (This will change when we talk about weighted graph in the next chapter)
+
+		while( !theStack.isEmpty() ) // until stack empty
+		{ // get stack top
+		int currentVertex = theStack.peek();
+		// get next unvisited neighbor
+		int v = getAdjUnvisitedVertex(currentVertex);
+		if(v == -1) // if no more neighbors
+		theStack.pop(); // pop it away
+		else // got a neighbor
+		{
+		vertexList[v].wasVisited = true; // mark it
+		theStack.push(v); // push it
+		// display edge
+		displayVertex(currentVertex); // from currentV
+		displayVertex(v); // to v
+		System.out.print(“ “);
+		}
+		} // end while(stack not empty)
+		// stack is empty, so we’re done
+		for(int j=0; j<nVerts; j++) // reset flags
+		vertexList[j].wasVisited = false;
+		} // end mst()
+		
+As you can see, this code is very similar to dfs(). In the else statement, however, the current vertex and its next unvisited neighbor are displayed. These two vertices define the edge that the algorithm is currently travelling to get to a new vertex, and it's tehese edges that make up the minimum spanning tree.
+
+#### Topological Sorting with Directed Graph 
+* Directed Graph: graph with direction
+
+Compare to undirected graph, the method that adds an edge thus needs only a single statement:
+
+		public void addEdge(int start, int end) // directed graph
+		{
+		adjMat[start][end] = 1;
+		}
+
+The idea of the topological sorting is unusual but simple. Two steps are necessary:
+* Step 1: Find a vertex that has no succesors.
+* Step 2: Delete this vertex from the graph, and insert its label at the beginning of a list
+
+##### Cycles and Tree 
+* One kind of graph the topological sort algorithm can not handle is a graph with cycle. It's a path that ends up where it started
+* A graph with no cycles is called a tree.
+* It's easy to figure out if a non-directed graph has cycles. If a graph with N nodes has nore than N-1 edges, it must have cycles.
+* A topological sort must be carried out on a directed graph with no cycles. Such a graph is called a direct acyclic graph, often abbreviated DAG
+
+
+		public void topo() // topological sort
+		{
+		int orig_nVerts = nVerts; // remember how many verts
+		while(nVerts > 0) // while vertices remain,
+		{
+		// get a vertex with no successors, or -1
+		int currentVertex = noSuccessors();
+		if(currentVertex == -1) // must be a cycle
+		{
+		System.out.println(“ERROR: Graph has cycles”);
+		return;
+		}
+		// insert vertex label in sorted array (start at end)
+		sortedArray[nVerts-1] = vertexList[currentVertex].label;
+		deleteVertex(currentVertex); // delete vertex
+		} // end while
+		
+		// vertices all gone; display sortedArray
+		System.out.print(“Topologically sorted order: “);
+		for(int j=0; j<orig_nVerts; j++)
+		System.out.print( sortedArray[j] );
+		System.out.println(“”);
+		} // end topo
+		
+		public int noSuccessors() // returns vert with no successors
+		{ // (or -1 if no such verts)	
+		boolean isEdge; // edge from row to column in adjMat
+		for(int row=0; row<nVerts; row++) // for each vertex,
+		{
+		isEdge = false; // check edges
+		for(int col=0; col<nVerts; col++)
+		{
+		if( adjMat[row][col] > 0 ) // if edge to
+		{ // another,
+		isEdge = true;
+		break; // this vertex
+		} // has a successor
+		} // try another
+		if( !isEdge ) // if no edges,
+		return row; // has no successors
+		}
+		return -1; // no such vertex
+		} // end noSuccessors()
+		
+MY: Don't quite get topological sort.
+
+Page 657
