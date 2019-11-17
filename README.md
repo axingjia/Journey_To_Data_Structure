@@ -2377,4 +2377,58 @@ Other site uses recursive (https://www.youtube.com/watch?v=ddTC4Zovtbc)[method]
 * It is O(N)
 * It's possible to construct a table that tell you instantly (that is, O(1) time) whether one vertex is reachable from another. Such a table can be obtained by systematically modifying a graph's adjacency matrix. This table is called transitive closure of the original graph
 
-page 663
+MY: Not getting Warshall's algorithm. Gonna check (online)[https://www.youtube.com/watch?v=4NQ3HnhyNfQ]
+
+SKIP
+
+# Weighted Graph 
+* Some interesting question: 1. what is the minimum spanning tree for a weighted graph? What is the shortest (or cheapest) distance from one vertex to another.
+
+###### Connecting Cable: minimum spanning tree
+* The main idea Always find the cheapest next path
+
+##### Creating the algorithm
+* use Priority Queue
+* We use priority queue to maintain a list of the costs of links between pairs of cities 
+* Main idea: 1. Find all the edges from the newest vertex to other vertices that aren't in the tree. Put these edges in the priority queue. 2. Pick the dge with the lowest weight, and add this edge and its desintation vertex to the tree.
+* make sure you don't have any edges in the prioirty queue that lead to vertices that are already in the tree
+
+		public void mstw() // minimum spanning tree
+		{
+		currentVert = 0; // start at 0
+		while(nTree < nVerts-1) // while not all verts in tree
+		{ // put currentVert in tree
+		vertexList[currentVert].isInTree = true;
+		nTree++;
+		// insert edges adjacent to currentVert into PQ
+		for(int j=0; j<nVerts; j++) // for each vertex,
+		{
+		if(j==currentVert) // skip if it’s us
+		continue;
+		if(vertexList[j].isInTree) // skip if in the tree
+		continue;
+		int distance = adjMat[currentVert][j];
+		if( distance == INFINITY) // skip if no edge
+		continue;
+		putInPQ(j, distance); // put it in PQ (maybe)
+		}
+		if(thePQ.size()==0) // no vertices in PQ?
+		{
+		System.out.println(“ GRAPH NOT CONNECTED”);
+		return;
+		}
+		// remove edge with minimum distance, from PQ
+		Edge theEdge = thePQ.removeMin();
+		int sourceVert = theEdge.srcVert;
+		currentVert = theEdge.destVert;
+		// display edge from source to current
+		System.out.print( vertexList[sourceVert].label );
+		System.out.print( vertexList[currentVert].label );
+		System.out.print(“ “);
+		} // end while(not all verts in tree)
+		// mst is complete
+		for(int j=0; j<nVerts; j++) // unmark vertices
+		vertexList[j].isInTree = false;
+		} // end mstw()
+		
+page 679
