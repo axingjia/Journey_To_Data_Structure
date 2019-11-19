@@ -2432,3 +2432,19 @@ SKIP
 		} // end mstw()
 		
 page 679
+
+(prim's and Kruskal Algoritm)[https://www.youtube.com/watch?v=4ZlRH0eK-qQ]
+
+(prim's algorithm code)[https://www.geeksforgeeks.org/prims-minimum-spanning-tree-mst-greedy-algo-5/]
+
+(prim's algorithm)[https://www.youtube.com/watch?v=oP2-8ysT3QQ]
+
+MY: There are just so many ways to implement it, Tushar way, geekforgeek way, this book's way.
+
+MY: How to tackle it
+
+I understand the general idea, but why Tushar's way is so complicated, with heap and
+
+(MIT Minimum Spanning Tree)[https://www.youtube.com/watch?v=tKwnms5iRBU&list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp&index=16&fbclid=IwAR0HaYpaKsBplFQMOXfssnJLIr312yv6MaGRlgi5E0asdAbpqBSnsAhLIxE] (watched)
+
+conclusion is, I have figure out the general idea of prim's algorithm and krusal algorithm. Now I just need to read all the implementation and pick one
