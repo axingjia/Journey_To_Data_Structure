@@ -2448,3 +2448,33 @@ I understand the general idea, but why Tushar's way is so complicated, with heap
 (MIT Minimum Spanning Tree)[https://www.youtube.com/watch?v=tKwnms5iRBU&list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp&index=16&fbclid=IwAR0HaYpaKsBplFQMOXfssnJLIr312yv6MaGRlgi5E0asdAbpqBSnsAhLIxE] (watched)
 
 conclusion is, I have figure out the general idea of prim's algorithm and krusal algorithm. Now I just need to read all the implementation and pick one
+
+MY: I need to figure out graph theory before moving forward. There are just so many blindspot.
+
+I can read the kindle book now, takes 20 hours.    
+I can take the coursera course on Graph Theory.    
+I can watch the graph theory youtube video.     
+
+I think I will decide to take the coursera course. It is the quickest way to cover the blindspot.
+
+Was watching (this)[https://www.youtube.com/watch?v=HkNdNpKUByM]
+
+Going to read the discrete mathematics textbook from page 513 to 631
+
+# Discrete Math Graph Theory
+* Leonhard Euler(1707-1783)
+* Symmetric relation: aka two way relation 
+* mathematical notation is a lot easit to write down
+* (V,E) is called a directed graph, or digraph.
+* For any edge, such as (b,c), we say that the edge is incident with the vertices b, c; b is said to be adjacent to c, whereas c is adjacent from b; the edge (a,a) is an example of a loop, the vertex e that has no incident edges is called an isolated vertex
+* let x, y be (not necessarily distinct) vertices in an undirected graph G=(V,E). and x-y walk in G is a (loop-free) finite alternating sequence: x=x0,e1,x1,e2,x2,e3....,e(n-1), x(n-1),e(n),x(n)=y
+* the length of this walk is n, the number of edges in the walk. When n=0, there are no edges, x=y, and the walk is called trivial.
+* any x-y walk where x=y(and n>1) is called a closed walk. aka, you walk back to original vertice. Otherwise the walk is called open
+* if no edge in the x-y walk is repeated, then the walk is called an x-y trail, a closed x-x trail is called a circuit
+* if no vertex of the x-y walk occurs more than once, then the walk is called an x-y path. When x=y, the term cycle is used to describe such a closed path
+
+Good (video)[https://www.youtube.com/watch?v=HkNdNpKUByM&t=470s] that matches the textbook
+
+discrete math page 517
+
+Math textbook is more dense than CS book
