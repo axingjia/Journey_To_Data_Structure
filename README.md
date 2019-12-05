@@ -2478,3 +2478,23 @@ Good (video)[https://www.youtube.com/watch?v=HkNdNpKUByM&t=470s] that matches th
 discrete math page 517
 
 Math textbook is more dense than CS book
+
+page 531
+
+The tutorial is fit to the textbook to the T.
+* hypercube
+* even number of odd degree
+
+Topics in discrete math:
+* set, different notation, set builder notation, where notation
+* ordered set, cartesian product, tuple
+* subset, proper subset, power set
+* symmetric difference, index sets, well-order principle
+* propositional logic
+* direct proof
+* proof by case
+* path, curcuit
+* subgraph, complement, complete graph
+* isomorphism and bipartite
+* degree and euler trails
+* Euler's Theorem
