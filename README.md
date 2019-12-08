@@ -2142,49 +2142,49 @@ Because insert and remove operate in O(logN), each must be applied N times, the 
 
 		class Vertex
 		{
-		public char label; // label (e.g. ‘A’)
-		public boolean wasVisited;
-		public Vertex(char lab) // constructor
-		{
-		label = lab;
-		wasVisited = false;
-		}
+			public char label; // label (e.g. ‘A’)
+			public boolean wasVisited;
+			public Vertex(char lab) // constructor
+			{
+				label = lab;
+				wasVisited = false;
+			}
 		} // end class Vertex
 		
 * adjacency matrix and the adjaceny list
 
 		class Graph
 		{
-		private final int MAX_VERTS = 20;
-		private Vertex vertexList[]; // array of vertices
-		private int adjMat[][]; // adjacency matrix
-		private int nVerts; // current number of vertices
-		// -------------------------------------------------------------
-		public Graph() // constructor
-		{
-		vertexList = new Vertex[MAX_VERTS];
-		// adjacency matrix
-		adjMat = new int[MAX_VERTS][MAX_VERTS];
-		nVerts = 0;
-		for(int j=0; j<MAX_VERTS; j++) // set adjacency
-		for(int k=0; k<MAX_VERTS; k++) // matrix to 0
-		adjMat[j][k] = 0;
-		} // end constructor
+			private final int MAX_VERTS = 20;
+			private Vertex vertexList[]; // array of vertices
+			private int adjMat[][]; // adjacency matrix
+			private int nVerts; // current number of vertices
+			// -------------------------------------------------------------
+			public Graph() // constructor
+			{
+				vertexList = new Vertex[MAX_VERTS];
+				// adjacency matrix
+				adjMat = new int[MAX_VERTS][MAX_VERTS];
+				nVerts = 0;
+				for(int j=0; j<MAX_VERTS; j++) // set adjacency
+				for(int k=0; k<MAX_VERTS; k++) // matrix to 0
+				adjMat[j][k] = 0;
+			} // end constructor
 		// -------------------------------------------------------------
 		public void addVertex(char lab) // argument is label
 		{
-		vertexList[nVerts++] = new Vertex(lab);
+			vertexList[nVerts++] = new Vertex(lab);
 		}
 		// -------------------------------------------------------------
 		public void addEdge(int start, int end)
 		{
-		adjMat[start][end] = 1;
-		adjMat[end][start] = 1;
+			adjMat[start][end] = 1;
+			adjMat[end][start] = 1;
 		}
 		// -------------------------------------------------------------
 		public void displayVertex(int v)
 		{
-		System.out.print(vertexList[v].label);
+			System.out.print(vertexList[v].label);
 		}
 		// -------------------------------------------------------------
 		} // end class Graph
@@ -2209,25 +2209,25 @@ MY: Not getting the implementation. Need help
 		
 		public void dfs() // depth-first search
 		{ // begin at vertex 0
-		vertexList[0].wasVisited = true; // mark it
-		displayVertex(0); // display it
-		theStack.push(0); // push it
-		while( !theStack.isEmpty() ) // until stack empty,
-		{
-			// get an unvisited vertex adjacent to stack top
-			int v = getAdjUnvisitedVertex( theStack.peek() );
-			if(v == -1) // if no such vertex,
-			theStack.pop(); // pop a new one
-			else // if it exists,
+			vertexList[0].wasVisited = true; // mark it
+			displayVertex(0); // display it
+			theStack.push(0); // push it
+			while( !theStack.isEmpty() ) // until stack empty,
 			{
-				vertexList[v].wasVisited = true; // mark it
-				displayVertex(v); // display it
-				theStack.push(v); // push it
-			}
-		} // end while
-		// stack is empty, so we’re done
-		for(int j=0; j<nVerts; j++) // reset flags
-			vertexList[j].wasVisited = false;
+				// get an unvisited vertex adjacent to stack top
+				int v = getAdjUnvisitedVertex( theStack.peek() );
+				if(v == -1) // if no such vertex,
+				theStack.pop(); // pop a new one
+				else // if it exists,
+				{
+					vertexList[v].wasVisited = true; // mark it
+					displayVertex(v); // display it
+					theStack.push(v); // push it
+				}
+			} // end while
+			// stack is empty, so we’re done
+			for(int j=0; j<nVerts; j++) // reset flags
+				vertexList[j].wasVisited = false;
 		} // end dfs
 		
 		Graph theGraph = new Graph();
@@ -2252,24 +2252,24 @@ MY: Not getting the implementation. Need help
 
 		public void bfs() // breadth-first search
 		{ // begin at vertex 0
-		vertexList[0].wasVisited = true; // mark it
-		displayVertex(0); // display it
-		theQueue.insert(0); // insert at tail
-		int v2;
-		while( !theQueue.isEmpty() ) // until queue empty,
-		{
-		int v1 = theQueue.remove(); // remove vertex at head
-		// until it has no unvisited neighbors
-		while( (v2=getAdjUnvisitedVertex(v1)) != -1 )
-		{ // get one,
-		vertexList[v2].wasVisited = true; // mark it
-		displayVertex(v2); // display it
-		theQueue.insert(v2); // insert it
-		} // end while(unvisited neighbors)
-		} // end while(queue not empty)
-		// queue is empty, so we’re done
-		for(int j=0; j<nVerts; j++) // reset flags
-		vertexList[j].wasVisited = false;
+			vertexList[0].wasVisited = true; // mark it
+			displayVertex(0); // display it
+			theQueue.insert(0); // insert at tail
+			int v2;
+			while( !theQueue.isEmpty() ) // until queue empty,
+			{
+				int v1 = theQueue.remove(); // remove vertex at head
+				// until it has no unvisited neighbors
+				while( (v2=getAdjUnvisitedVertex(v1)) != -1 )
+				{ // get one,
+					vertexList[v2].wasVisited = true; // mark it
+					displayVertex(v2); // display it
+					theQueue.insert(v2); // insert it
+				} // end while(unvisited neighbors)
+			} // end while(queue not empty)
+			// queue is empty, so we’re done
+			for(int j=0; j<nVerts; j++) // reset flags
+			vertexList[j].wasVisited = false;
 		} // end bfs()
 		
 BFS is useful if you are trying to find the shortest path from the starting vertex to a given vertex. When you find the specified vertex, you know the path you've trace so far is the shortest path to the node. If there were a shorter path, the BFS would have found it already.
@@ -2329,42 +2329,42 @@ The idea of the topological sorting is unusual but simple. Two steps are necessa
 		int orig_nVerts = nVerts; // remember how many verts
 		while(nVerts > 0) // while vertices remain,
 		{
-		// get a vertex with no successors, or -1
-		int currentVertex = noSuccessors();
-		if(currentVertex == -1) // must be a cycle
-		{
-		System.out.println(“ERROR: Graph has cycles”);
-		return;
-		}
-		// insert vertex label in sorted array (start at end)
-		sortedArray[nVerts-1] = vertexList[currentVertex].label;
-		deleteVertex(currentVertex); // delete vertex
+			// get a vertex with no successors, or -1
+			int currentVertex = noSuccessors();
+			if(currentVertex == -1) // must be a cycle
+			{
+				System.out.println(“ERROR: Graph has cycles”);
+				return;
+			}
+			// insert vertex label in sorted array (start at end)
+			sortedArray[nVerts-1] = vertexList[currentVertex].label;
+			deleteVertex(currentVertex); // delete vertex
 		} // end while
 		
 		// vertices all gone; display sortedArray
 		System.out.print(“Topologically sorted order: “);
 		for(int j=0; j<orig_nVerts; j++)
-		System.out.print( sortedArray[j] );
-		System.out.println(“”);
+			System.out.print( sortedArray[j] );
+			System.out.println(“”);
 		} // end topo
 		
 		public int noSuccessors() // returns vert with no successors
 		{ // (or -1 if no such verts)	
-		boolean isEdge; // edge from row to column in adjMat
-		for(int row=0; row<nVerts; row++) // for each vertex,
-		{
-		isEdge = false; // check edges
-		for(int col=0; col<nVerts; col++)
-		{
-		if( adjMat[row][col] > 0 ) // if edge to
-		{ // another,
-		isEdge = true;
-		break; // this vertex
-		} // has a successor
-		} // try another
-		if( !isEdge ) // if no edges,
-		return row; // has no successors
-		}
+			boolean isEdge; // edge from row to column in adjMat
+			for(int row=0; row<nVerts; row++) // for each vertex,
+			{
+			isEdge = false; // check edges
+			for(int col=0; col<nVerts; col++)
+			{
+				if( adjMat[row][col] > 0 ) // if edge to
+				{ // another,
+					isEdge = true;
+					break; // this vertex
+				} // has a successor
+			} // try another
+			if( !isEdge ) // if no edges,
+				return row; // has no successors
+			}
 		return -1; // no such vertex
 		} // end noSuccessors()
 		
@@ -2395,40 +2395,40 @@ SKIP
 
 		public void mstw() // minimum spanning tree
 		{
-		currentVert = 0; // start at 0
-		while(nTree < nVerts-1) // while not all verts in tree
-		{ // put currentVert in tree
-		vertexList[currentVert].isInTree = true;
-		nTree++;
-		// insert edges adjacent to currentVert into PQ
-		for(int j=0; j<nVerts; j++) // for each vertex,
-		{
-		if(j==currentVert) // skip if it’s us
-		continue;
-		if(vertexList[j].isInTree) // skip if in the tree
-		continue;
-		int distance = adjMat[currentVert][j];
-		if( distance == INFINITY) // skip if no edge
-		continue;
-		putInPQ(j, distance); // put it in PQ (maybe)
-		}
-		if(thePQ.size()==0) // no vertices in PQ?
-		{
-		System.out.println(“ GRAPH NOT CONNECTED”);
-		return;
-		}
-		// remove edge with minimum distance, from PQ
-		Edge theEdge = thePQ.removeMin();
-		int sourceVert = theEdge.srcVert;
-		currentVert = theEdge.destVert;
-		// display edge from source to current
-		System.out.print( vertexList[sourceVert].label );
-		System.out.print( vertexList[currentVert].label );
-		System.out.print(“ “);
-		} // end while(not all verts in tree)
-		// mst is complete
-		for(int j=0; j<nVerts; j++) // unmark vertices
-		vertexList[j].isInTree = false;
+			currentVert = 0; // start at 0
+			while(nTree < nVerts-1) // while not all verts in tree
+			{ // put currentVert in tree
+				vertexList[currentVert].isInTree = true;
+				nTree++;
+				// insert edges adjacent to currentVert into PQ
+				for(int j=0; j<nVerts; j++) // for each vertex,
+				{
+					if(j==currentVert) // skip if it’s us
+					continue;
+					if(vertexList[j].isInTree) // skip if in the tree
+						continue;
+					int distance = adjMat[currentVert][j];
+					if( distance == INFINITY) // skip if no edge
+						continue;
+					putInPQ(j, distance); // put it in PQ (maybe)
+				}
+				if(thePQ.size()==0) // no vertices in PQ?
+				{
+					System.out.println(“ GRAPH NOT CONNECTED”);
+					return;
+				}
+				// remove edge with minimum distance, from PQ
+				Edge theEdge = thePQ.removeMin();
+				int sourceVert = theEdge.srcVert;
+				currentVert = theEdge.destVert;
+				// display edge from source to current
+				System.out.print( vertexList[sourceVert].label );
+				System.out.print( vertexList[currentVert].label );
+				System.out.print(“ “);
+			} // end while(not all verts in tree)
+			// mst is complete
+			for(int j=0; j<nVerts; j++) // unmark vertices
+				vertexList[j].isInTree = false;
 		} // end mstw()
 		
 page 679
@@ -2512,4 +2512,19 @@ Topics in discrete math:
 
 Now back to CS textbook
 
-I need to review topological sort, and then review minimal spanning tree
+I need to review topological sort, and then review minimal spanning tree. Back to page 676
+
+
+* skip Prim's and Kruskal's
+* skip dijkstra's algoritm
+* skip efficiency 
+* skip intractable
+
+# When to Use What 
+* array: when the amount of data is reasonable small; the amount of data is predictable in advance;if you have plenty of memory; if insertion speed is important, use an unorder array. If search speed is important, use an order array with a binary search; deltion is always slow. Traversal is fast in ordered but not in unordered; Vector expands themselves, it can be worked with with the amount of data that isn't known in advanced
+* Linked list: Unpredictable amount of data; no need to fill "holes" during deletion; insertion is fast in unordered list. Searching and deltion are slow; linked lists are best used when the amounto f data is comparatively small
+* Binary Search Tree: fast insertion, searching, deletion.
+* Balanced Tree: skip
+* Hash Table: fastest data storage structure; used in spelling checkers; it requires additional memory;
+
+<img src="assets/different_speed.png">
