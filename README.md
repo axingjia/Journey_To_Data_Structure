@@ -2498,3 +2498,18 @@ Topics in discrete math:
 * isomorphism and bipartite
 * degree and euler trails
 * Euler's Theorem
+* Hamilton cycle 
+* Graph Coloring
+* Tree
+* traversal
+* Dijkstra's Algorithm
+* Not reading Flowing Network
+* Not reading Minimal Cut 
+* Not reading Operation Research
+* Skim the textbook too 
+
+* * *
+
+Now back to CS textbook
+
+I need to review topological sort, and then review minimal spanning tree
